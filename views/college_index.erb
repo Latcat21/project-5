@@ -1,0 +1,17 @@
+<h1>Welcome to your account page</h1>
+<p>please fill out the following information to creat your account</p>
+<form action="/college-account" method="POST">
+  <input type="text" name="name" placeholder="name" />    
+  <input type="text" name="school_name" placeholder="school name">
+  <input type="text" name="location" placeholder="location"><br>
+  <h2>Select the positions you need filled</h2>
+  <input type="checkbox" name="position[]" value="catcher">catcher<br>
+  <input type="checkbox" name="position[]" value="pitcher">pitcher<br>
+  <input type="checkbox" name="position[]" value="first-base">1st base<br>
+  <input type="checkbox" name="position[]" value="second-base">2nd base<br>
+  <input type="checkbox" name="position[]" value="third-base">third-base<br>
+  <input type="checkbox" name="position[]" value="short-stop">short-stop<br>
+  <input type="checkbox" name="position[]" value="left-feild">left feild<br>
+  <input type="checkbox" name="position[]" value="right-feild">right feild<br>
+  <button>create account</button>
+</form>
