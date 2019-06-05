@@ -27,14 +27,6 @@ post '/' do
   # loop over college_postiion_ids
     # insert row into table with the position Id and the college id
     #then save it using acctive recoded. uisng 
-  
-
-
-    # i = 0
-    # while i < college_positions.length do
-    # end
-
-    # console.log(college_positions)
   #   create entry in thru table with that position's id
   #   save entry in thru table
 

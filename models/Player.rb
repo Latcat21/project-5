@@ -1,3 +1,5 @@
-class Player < ActiveRecord::Base
-  has_many :position, :through => :player_positions
+class Player <  ActiveRecord::Base
+    has_many :player_positions
+
+
 end
