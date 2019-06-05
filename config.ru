@@ -10,6 +10,8 @@ require './models/User'
 require './models/College'
 require './models/Player'
 require './models/Position'
+require './models/CollegeNeed'
+require './models/PlayerPosition'
 
 
 map ('/') {
