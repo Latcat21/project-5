@@ -15,7 +15,7 @@ CREATE TABLE colleges(
   id SERIAL PRIMARY KEY,
   name VARCHAR(32),
   school_name VARCHAR(255),
-  location VARCHAR(255),
+  location VARCHAR(255), 
   user_id INTEGER REFERENCES users(id)
 );
 
@@ -37,8 +37,13 @@ CREATE TABLE positions(
 
 CREATE TABLE college_needs(
   id SERIAL PRIMARY KEY,
-  college_id INTEGER REFERENCES colleges(id),
-  position_id INTEGER REFERENCES positions(id)
+  college_id INTEGER REFERENCES colleges(id), --THIS FOREIGN KEY INDICATES A COLLEGE_NEED BELONG TO THE COLLEGE REFERENCED BY THAT ID
+                                              --THIS ALSO MEANS THAT A COLLEGE HAS MANY COLLEGE_NEEDS
+
+
+  position_id INTEGER REFERENCES positions(id) --college need belongs to position
+                                                --this means that position has many college needs
+
 );
 
 CREATE TABLE player_positions(
