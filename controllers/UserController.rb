@@ -79,10 +79,10 @@ user.save
    if user.player_user == true
 
        
-          redirect '/player-account'
+          redirect '/player-registration'
           
       else
-         redirect '/college-account'
+         redirect '/college-registration'
       end
 
       # add stuff to session: loggedin, username, message

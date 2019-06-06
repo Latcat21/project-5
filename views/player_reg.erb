@@ -1,0 +1,29 @@
+<h1>Welcome to your account page</h1>
+<p>please fill out the following information to creat your account</p>
+
+
+
+
+
+
+
+<form action="/player-registration" method="POST">
+  <input type="text" name="name" placeholder="name" /> <br>   
+  <input type="text" name="school_name" placeholder="school name"><br>
+  <input type="number" name="height" placeholder="height"><br>
+  <input type="number" name="weight" placeholder="weight"><br>
+  <input type="text" name="stats" placeholder="stats"><br>
+  
+  
+  <h2>Select the positions you play </h2>
+
+<ul>
+<% @positions.each do |position| %>
+
+  <li>
+    <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
+  </li>
+  <% end %>
+  </ul>
+  <button>create account</button>
+</form>

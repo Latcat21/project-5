@@ -4,7 +4,7 @@ class CollegeController < ApplicationController
 get '/' do
   # get positions from postions table
   @positions = Position.all
-  erb :college_index
+  erb :college_reg
 end
 
 # post route that list creates a college based on user input 
@@ -40,20 +40,21 @@ post '/' do
     new_college_need.save
 
   end
-    # insert row into table with the position Id and the college id
-    #then save it using acctive recoded. uisng 
-  #   create entry in thru table with that position's id
-  #   save entry in thru table
 
   "check terminal"
 
-  # redirect '/player-search'
-
 end
 
-get '/player-results' do
-  erb :player_results
 
-end
+
+
+
+
+# get '/college-account' do
+
+
+#   erb :player_results
+
+# end
 
 end

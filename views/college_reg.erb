@@ -1,0 +1,27 @@
+<h1>Welcome to your account page</h1>
+<p>please fill out the following information to creat your account</p>
+
+
+
+
+
+
+
+<form action="/college-registration" method="POST">
+  <input type="text" name="name" placeholder="name" />    
+  <input type="text" name="school_name" placeholder="school name">
+  <input type="text" name="location" placeholder="location"><br>
+  
+  
+  <h2>Select the positions you need filled</h2>
+
+<ul>
+<% @positions.each do |position| %>
+
+  <li>
+    <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
+  </li>
+  <% end %>
+  </ul>
+  <button>create account</button>
+</form>
