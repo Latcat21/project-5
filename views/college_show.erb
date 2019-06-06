@@ -1,0 +1,23 @@
+<h1>Welcome to your account page</h1>
+
+
+<h3>Name  <%= @college.name %> </h3>
+<h3>School  <%= @college.school_name %> </h3>
+<h3>Location  <%= @college.location %> </h3>
+
+<div>
+<h2> positions I need filled </h2>
+
+<ul>
+
+<%@positions.each do |position| %>
+
+<li><%=position.name%>
+ <input type="hidden" name="_method" value="DELETE">
+            <button>Delete</button>
+          </form>
+</li>
+
+<% end %>
+</ul>
+</div>

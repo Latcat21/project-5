@@ -20,10 +20,10 @@ map ('/') {
 map ('/users') {
   run UserController
 }
-map ('/college-registration') {
+map ('/colleges') {
   run CollegeController
 }
-map ('/player-registration') {
+map ('/players') {
   run PlayerController
 }
 

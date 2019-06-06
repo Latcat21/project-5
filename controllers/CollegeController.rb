@@ -7,8 +7,11 @@ get '/' do
   erb :college_reg
 end
 
+
+
+
 # post route that list creates a college based on user input 
-post '/' do
+post '/account' do
 
   puts "here are the params"
   pp params
@@ -17,6 +20,9 @@ post '/' do
   new_college.name = params[:name]
   new_college.school_name = params[:school_name]
   new_college.location = params[:location]
+  new_college.user_id =  session[:user_id]
+
+  # assign the college a user id here (based on the session)
 
   new_college.save
 
@@ -41,20 +47,31 @@ post '/' do
 
   end
 
-  "check terminal"
+  redirect '/colleges/account'
 
 end
 
+get '/account' do
+
+  puts "session:"
+  pp session
+
+  @college = College.find_by({ :user_id => session[:user_id]})
+ 
+  # positions = CollegeNeed.find_by({ :college_id => @college.id })
+  @positions = @college.positions
+  puts "positions:"
+  pp @positions
+
+
+  erb :college_show
+
+
+ end
 
 
 
 
 
-# get '/college-account' do
-
-
-#   erb :player_results
-
-# end
 
 end

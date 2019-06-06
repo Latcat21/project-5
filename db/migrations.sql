@@ -7,8 +7,8 @@ CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(32),
   password_digest VARCHAR(60),
-  player_user BOOLEAN 
-
+  player_user BOOLEAN,
+  college_user BOOLEAN
 );
 
 CREATE TABLE colleges(

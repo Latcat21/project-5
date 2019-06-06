@@ -39,12 +39,15 @@ post '/' do
 
   end
 
-  "check terminal"
 
+
+  redirect '/players/account'
 end
 
-get '/player-results' do
-  erb :player_results
+
+
+get '/account' do
+  erb :player_index
 
 end
 

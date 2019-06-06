@@ -18,7 +18,7 @@ class UserController < ApplicationController
 
     # if the user exists and password is correct --
     # password is now being checked using bcrypt
-    if user && user.authenticate(pw)
+    if user && user.authenticate(pw) 
       # add stuff to session: loggedin, username, message
       session[:logged_in] = true
       session[:username] = user.username
@@ -27,8 +27,9 @@ class UserController < ApplicationController
         status: "good",
         message: "Logged in as #{user.username}"
       }
+   
       # redirect to /items
-      redirect '/account'
+      redirect '/colleges'
 
     # else 
     else
@@ -71,29 +72,32 @@ class UserController < ApplicationController
         user.player_user = true
         
       else 
-        # fill in bools
+        user_type == 'college'
+        user.college_user == true
       end # setting user type based on input
 
 
-user.save
-   if user.player_user == true
+      user.save
 
-       
-          redirect '/player-registration'
-          
-      else
-         redirect '/college-registration'
-      end
-
-      # add stuff to session: loggedin, username, message
       session[:logged_in] = true
       session[:username] = user.username
+      session[:user_id] = user.id
       session[:message] = {
         success: true,
         status: "good",
         message: "Welcome to the site, you are now logged in as #{user.username}."
       }
-                            
+
+      if user.player_user == true
+
+          redirect '/players'
+          
+      else
+         redirect '/colleges'
+      end
+
+      # add stuff to session: loggedin, username, message
+                    
       # if user.player_user == true
 
       #     redirect to the site
