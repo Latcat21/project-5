@@ -1,1 +1,30 @@
 <h1>Welcome to your account page</h1>
+
+<h3>Name <%= @player.name %> </h3>
+<h3>Name <%= @player.school_name %> </h3>
+<h3>Name <%= @player.location %> </h3>
+<h3>Name <%= @player.height %> </h3>
+<h3>Name <%= @player.weight %> </h3>
+<h3>Name <%= @player.stats %> </h3>
+
+<h2>Positions I play </h2>
+
+<ul>
+
+  <% @positions.each do |position| %>
+    <li>
+      <%= position.name%>
+    </li>
+
+
+  <% end %>
+
+</ul>
+
+
+
+
+
+
+
+

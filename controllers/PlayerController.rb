@@ -4,7 +4,7 @@ class PlayerController < ApplicationController
   erb :player_reg
 
 end
-post '/' do
+post '/account' do
 
   puts "here are the params"
   pp params
@@ -16,6 +16,7 @@ post '/' do
   new_player.height = params[:height]
   new_player.weight = params[:weight]
   new_player.stats = params[:stats]
+  new_player.user_id = session[:user_id]
 
   new_player.save
 
@@ -47,10 +48,38 @@ end
 
 
 get '/account' do
-  erb :player_index
+
+  # this is using a through table to get positions for a player
+  @player = Player.find_by({:user_id => session[:user_id]})
+  @positions = @player.positions
+
+
+  erb :player_show
 
 end
 
+get '/matching-colleges' do
+
+  # I need to find out which colleges have open positions I play
+
+  # given a position, find which colleges have it
+
+  # get all the pos for this player
+
+  # for each position i play -- 
+
+    #find  colleges  with a need that matches that position
+# position .colleges hint hint
+
+  
+
+
+
+
+
+  erb :college_match
+
+end
 
 
 

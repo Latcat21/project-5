@@ -69,9 +69,4 @@ get '/account' do
 
  end
 
-
-
-
-
-
 end
