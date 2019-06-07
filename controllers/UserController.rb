@@ -27,11 +27,16 @@ class UserController < ApplicationController
         status: "good",
         message: "Logged in as #{user.username}"
       }
-   
-      # redirect to /items
-      redirect '/colleges'
 
-    # else 
+      if user.player_user == true
+
+        redirect '/players'
+        
+    else
+       redirect '/colleges'
+    end
+
+ # else 
     else
       # error -- incorrect un or pw
       session[:message] = {
@@ -96,22 +101,7 @@ class UserController < ApplicationController
          redirect '/colleges'
       end
 
-      # add stuff to session: loggedin, username, message
-                    
-      # if user.player_user == true
-
-      #     redirect to the site
-      #     redirect '/player-account'
-          
-      # else
-      #    redirect '/college-account'
-      # end
-
-
-      # this is the end of the code that should happen if user didn't exist
-
-    # else if user does exist -- code above here is still for when user didn't exists -- this is the end of that
-    else 
+else 
       # session message -- username taken
       session[:message] = {
         success: false,
