@@ -1,1 +1,21 @@
+<body>
+<div class="container">
+
+
 <h1>welcome</h1>
+
+<ul>
+
+  <% @open_positions.each do |college| %>
+    <li>
+      <%= college.school_name%>
+    </li>
+
+
+  <% end %>
+
+</ul>
+
+
+</div>
+</body>

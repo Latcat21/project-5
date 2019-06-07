@@ -26,22 +26,31 @@ post '/account' do
   # this is an array of id's
  player_position_id = params[:position]
 
+#  if player_position_id.length > 2
+#   session[:message] = {
+#     success: false,
+#     status: "bad",
+#     message: "Sorry, you can only select 2 positions"
+#   }
+#   redirect('/players')
+# end
 
   # loop over player_postiion_ids
   player_position_id.each do |position_id|
 
-    new_player_position = PlayerPosition.new
-
-    new_player_position.player_id = new_player.id
-
-    new_player_position.position_id = position_id
     
-    new_player_position.save
 
-  end
+    
+      new_player_position = PlayerPosition.new
 
+      new_player_position.player_id = new_player.id
+  
+      new_player_position.position_id = position_id
+      
+      new_player_position.save
 
-
+    
+end
   redirect '/players/account'
 end
 
@@ -60,32 +69,31 @@ end
 
 get '/matching-colleges' do
 
-  # I need to find out which colleges have open positions I play
+  @player = Player.find_by({:user_id => session[:user_id]})
+  
+  @positions = @player.positions
 
-  # given a position, find which colleges have it
+  # @position = @positions[0]
+  #looping of college positions... I used flat map to get a single array instead of an array of arrays
+   @open_positions = @positions.flat_map do |position| 
+    position.colleges
 
-  # get all the pos for this player
+   end
 
-  # for each position i play -- 
+   #This makes it so there are no dupplicates
+   @open_positions = @open_positions.uniq()
 
-    #find  colleges  with a need that matches that position
+
+# get all the pos for this player
+
+
+# I need to find out which colleges have open positions I play
+# for each position i play -- 
+
+#find  colleges  with a need that matches that position
 # position .colleges hint hint
 
-  
+   erb :college_match
 
-
-
-
-
-  erb :college_match
-
-end
-
-
-
-
-
-
-
-
+ end
 end

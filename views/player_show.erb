@@ -1,11 +1,20 @@
-<h1>Welcome to your account page</h1>
+<body>
+<div class="container">
 
-<h3>Name <%= @player.name %> </h3>
-<h3>Name <%= @player.school_name %> </h3>
-<h3>Name <%= @player.location %> </h3>
-<h3>Name <%= @player.height %> </h3>
-<h3>Name <%= @player.weight %> </h3>
-<h3>Name <%= @player.stats %> </h3>
+
+<h1>Welcome to your account page</h1>
+  Name
+<h3><%= @player.name %> </h3>
+School Name
+<h3> <%= @player.school_name %> </h3>
+Location
+<h3> <%= @player.location %> </h3>
+Height
+<h3> <%= @player.height %> </h3>
+Weight
+<h3> <%= @player.weight %> </h3>
+Stats
+<h3> <%= @player.stats %> </h3>
 
 <h2>Positions I play </h2>
 
@@ -21,6 +30,10 @@
 
 </ul>
 
+
+<a href="/players/matching-colleges">Find College's That need you</a>
+</div>
+</body>
 
 
 
