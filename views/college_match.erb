@@ -2,19 +2,25 @@
 <div class="container">
 
 
-<h1>welcome</h1>
+<h1>Colleges that have your positions open</h1>
+<div class="row mt-2 mb-2">
+<div class='card text-center bg-light mt-3 mb-2'>
 
-<ul>
 
   <% @open_positions.each do |college| %>
-    <li>
-      <%= college.school_name%>
-    </li>
+    
+    <h2 class="card-header">College Name: <%= college.school_name%></h3>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item">location:  <%= college.location%></li>
+    <li class="list-group-item">Recruiters Name: <%= college.name%></li>
+    </ul>
+    <a class="btn btn-success btn-sm" href="mailto:<%=college.email %>" target="_blank">Email</a>
 
 
   <% end %>
 
-</ul>
+</div>
+</div>
 
 
 </div>

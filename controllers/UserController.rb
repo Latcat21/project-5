@@ -30,10 +30,10 @@ class UserController < ApplicationController
 
       if user.player_user == true
 
-        redirect '/players'
+        redirect '/players/account'
         
     else
-       redirect '/colleges'
+       redirect '/colleges/account'
     end
 
  # else 

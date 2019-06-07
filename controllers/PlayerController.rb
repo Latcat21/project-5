@@ -26,8 +26,6 @@ end
   redirect '/players/account'
 end
 
-
-
 get '/account' do
 
   # this is using a through table to get positions for a player
@@ -42,14 +40,20 @@ get '/matching-colleges' do
   @player = Player.find_by({:user_id => session[:user_id]})
   #finds this players positions
   @positions = @player.positions
+
+  puts "player's positions:"
+  pp @positions
+
   #looping over college positions... I used flat map to get a single array instead of an array of arrays
   @open_positions = @positions.flat_map do |position| 
+    puts "this position:"
+    pp position 
     position.colleges
-
   end
   #This makes it so there are no dupplicates
    @open_positions = @open_positions.uniq()
   erb :college_match
+  end
 
- end
 end
+

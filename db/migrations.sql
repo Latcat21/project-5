@@ -16,6 +16,7 @@ CREATE TABLE colleges(
   name VARCHAR(32),
   school_name VARCHAR(255),
   location VARCHAR(255), 
+  email VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 );
 CREATE TABLE players(

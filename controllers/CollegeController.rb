@@ -14,6 +14,7 @@ post '/account' do
   new_college.name = params[:name]
   new_college.school_name = params[:school_name]
   new_college.location = params[:location]
+  new_college.email = params[:email]
   new_college.user_id =  session[:user_id]
 
   # assign the college a user id here (based on the session)
@@ -47,13 +48,21 @@ get '/matching-players' do
   @college = College.find_by({ :user_id => session[:user_id]})
   #find the college positions
   @positions = @college.positions
-  #looping over players position with flat map to get a single array instead of an array of arrays
+
+  puts "college positions:"
+  pp @positions
+
+  #looping over players position with flat map to get a single array instead of  #an array of arrays
   @available_players = @positions.flat_map do |position|
+    
+    puts "this specific position:"
+    pp position
+    
     position.players
  end
  #this make it so there are no duplicates
- @available_players = @available_players.unique()
+ @available_players = @available_players.uniq()
   erb :player_match
-end
-
+ end
+ 
 end
