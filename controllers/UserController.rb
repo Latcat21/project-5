@@ -22,6 +22,7 @@ class UserController < ApplicationController
       # add stuff to session: loggedin, username, message
       session[:logged_in] = true
       session[:username] = user.username
+      session[:user_id] = user.id
       session[:message] = {
         success: true,
         status: "good",

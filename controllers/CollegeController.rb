@@ -73,15 +73,15 @@ end
 
 put '/account/:id' do
   
-  updated_college = College.find params[:id]
-  updated_college.name = params[:name]
-  updated_college.school_name = params[:school_name]
-  updated_college.location = params[:location]
-  updated_college.email = params[:email]
-  updated_college.save
+  @college = College.find params[:id]
+  @college.name = params[:name]
+  @college.school_name = params[:school_name]
+  @college.location = params[:location]
+  @college.email = params[:email]
+  @college.save
 
   #delete all play_positions associated with this college
-  @college = College.find_by({:user_id => session[:user_id]})
+  # @college = College.find_by({:user_id => session[:user_id]})
 
   found_positions = @college.college_needs
 
@@ -93,10 +93,10 @@ put '/account/:id' do
 
   # loop over college_postiion_ids
   college_position_ids.each do |position_id|
-  new_college_need = CollegeNeed.new
-  new_college_need.college_id = position_id
-  new_college_need.position_id = position_id
-  new_college_need.save
+    new_college_need = CollegeNeed.new
+    new_college_need.college_id = @college.id
+    new_college_need.position_id = position_id
+    new_college_need.save
   end
 redirect "/colleges/account"
   
