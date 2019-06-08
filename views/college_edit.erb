@@ -8,14 +8,13 @@
 
 
 
-<form action="/players/account/<%=@player.id %>" method="POST">
+<form action="/colleges/account/<%=@college.id %>" method="POST">
   <input type="hidden" name="_method" value="PUT" />
-  <input type="text" name="name" value="<%=@player.name %>" /> <br>   
-  <input type="text" name="school_name" value=" <%=@player.school_name%>"><br>
-  <input type="text" name="location" value="<%= @player.location %>">
-  <input type="number" name="height" value="<%= @player.height %>"><br>
-  <input type="number" name="weight" value="<%= @player.weight %>"><br>
-  <input type="text" name="stats" value="<%= @player.stats %>"><br>
+  <input type="text" name="name" value="<%=@college.name %>" /> <br>   
+  <input type="text" name="school_name" value=" <%=@college.school_name%>"><br>
+  <input type="text" name="location" value="<%= @college.location %>">
+  <input type="text" name="email" value="<%= @college.email %>"><br>
+  
   
   
   <h2>Edit Your positions </h2>

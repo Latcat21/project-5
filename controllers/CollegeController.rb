@@ -64,5 +64,44 @@ get '/matching-players' do
  @available_players = @available_players.uniq()
   erb :player_match
  end
- 
+
+ get '/:id/edit' do
+  @positions = Position.all
+  @college = College.find params[:id]
+  erb :college_edit
+end
+
+put '/account/:id' do
+  
+  updated_college = College.find params[:id]
+  updated_college.name = params[:name]
+  updated_college.school_name = params[:school_name]
+  updated_college.location = params[:location]
+  updated_college.email = params[:email]
+  updated_college.save
+
+  #delete all play_positions associated with this college
+  @college = College.find_by({:user_id => session[:user_id]})
+
+  found_positions = @college.college_needs
+
+  found_positions.each do |relation|
+    relation.destroy
+  end
+  #grabbing positions Id's to loop over
+  college_position_ids = params[:position]
+
+  # loop over college_postiion_ids
+  college_position_ids.each do |position_id|
+  new_college_need = CollegeNeed.new
+  new_college_need.college_id = position_id
+  new_college_need.position_id = position_id
+  new_college_need.save
+  end
+redirect "/colleges/account"
+  
+end
+
+
+
 end
