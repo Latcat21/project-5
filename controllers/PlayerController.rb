@@ -23,14 +23,15 @@ post '/account' do
   new_player_position.position_id = position_id
   new_player_position.save
 end
-  redirect '/players/account'
+  redirect "/players/account"
 end
 
 get '/account' do
-
+  user = User.find_by({:id => session[:user_id]})
   # this is using a through table to get positions for a player
   @player = Player.find_by({:user_id => session[:user_id]})
   @positions = @player.positions
+  @user_id = user.id
   erb :player_show
 
 end
@@ -54,6 +55,56 @@ get '/matching-colleges' do
    @open_positions = @open_positions.uniq()
   erb :college_match
   end
+
+get '/:id/edit' do
+  @positions = Position.all
+  @player = Player.find params[:id]
+  erb :player_edit
+
+end
+
+put '/account/:id' do
+  
+  
+  updated_player = Player.find params[:id]
+
+  updated_player.name = params[:name]
+  updated_player.school_name = params[:school_name]
+  updated_player.location = params[:location]
+  updated_player.height = params[:height]
+  updated_player.weight = params[:weight]
+  updated_player.stats = params[:stats]
+  updated_player.save
+
+  # delete all player_positions associated with this player 
+  @player = Player.find_by({:user_id => session[:user_id]})
+  
+  found_relations = @player.player_positions
+
+  puts "found_relations for player:"
+  pp found_relations
+
+  found_relations.each do |relation| 
+    relation.destroy
+  end
+
+
+  #grabbing position Id's to loop over
+  player_position_id = params[:position]
+    
+  player_position_id.each do |position_id|
+    new_player_position = PlayerPosition.new
+    new_player_position.player_id = updated_player.id
+    new_player_position.position_id = position_id
+    new_player_position.save
+  end
+
+  redirect "/players/account"
+
+end
+
+
+
 
 end
 

@@ -1,0 +1,32 @@
+<body>
+<div class="container">
+
+
+
+
+<h1>Edit your account</h1>
+
+
+
+<form action="/players/account/<%=@player.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT" />
+  <input type="text" name="name" value="<%=@player.name %>" /> <br>   
+  <input type="text" name="school_name" value=" <%=@player.school_name%>"><br>
+  <input type="text" name="location" value="<%= @player.location %>">
+  <input type="number" name="height" value="<%= @player.height %>"><br>
+  <input type="number" name="weight" value="<%= @player.weight %>"><br>
+  <input type="text" name="stats" value="<%= @player.stats %>"><br>
+  
+  
+  <h2>Edit Your positions </h2>
+
+<ul>
+<% @positions.each do |position| %>
+
+  <li>
+    <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
+  </li>
+  <% end %>
+  </ul>
+  <button>Update Account</button>
+</form>

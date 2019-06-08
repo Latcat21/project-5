@@ -34,6 +34,7 @@ CREATE TABLE positions(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255)
 );
+
 CREATE TABLE college_needs(
   id SERIAL PRIMARY KEY,
   college_id INTEGER REFERENCES colleges(id), 
@@ -44,7 +45,7 @@ CREATE TABLE college_needs(
 CREATE TABLE player_positions(
   id SERIAL PRIMARY KEY,
   player_id INTEGER REFERENCES players(id),
-  position_id INTEGER REFERENCES positions(id)
+  position_id INTEGER REFERENCES positions(id) 
 );
 
 
