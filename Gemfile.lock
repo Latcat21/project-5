@@ -16,6 +16,7 @@ GEM
     bcrypt (3.1.13)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+    ffi (1.11.1)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     json (2.2.0)
@@ -29,6 +30,14 @@ GEM
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
+    rb-fsevent (0.10.3)
+    rb-inotify (0.10.0)
+      ffi (~> 1.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -50,6 +59,7 @@ DEPENDENCIES
   json
   pg
   pry
+  sass
   sinatra
   sinatra-activerecord
 

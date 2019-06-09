@@ -13,6 +13,12 @@ require './models/Position'
 require './models/CollegeNeed'
 require './models/PlayerPosition'
 
+require 'sass/plugin/rack'
+
+Sass::Plugin.options[:style] = :compressed
+use Sass::Plugin::Rack
+
+
 
 map ('/') {
   run ApplicationController

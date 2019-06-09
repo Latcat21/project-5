@@ -27,6 +27,7 @@ CREATE TABLE players(
   height NUMERIC NOT NULL DEFAULT 'NaN',
   weight NUMERIC NOT NULL DEFAULT 'NaN',
   stats VARCHAR(255),
+  email VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 );
 

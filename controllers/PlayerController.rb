@@ -12,6 +12,7 @@ post '/account' do
   new_player.height = params[:height]
   new_player.weight = params[:weight]
   new_player.stats = params[:stats]
+  new_player.email = params[:email]
   new_player.user_id = session[:user_id]
   new_player.save
  # this is an array of id's

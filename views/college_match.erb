@@ -4,10 +4,12 @@
 
 <h1>Colleges that have your positions open</h1>
 <div class="row mt-2 mb-2">
-<div class='card text-center bg-light mt-3 mb-2'>
+<div class='card text-center bg-light my-3'>
+
 
 
   <% @open_positions.each do |college| %>
+  
     
     <h2 class="card-header">College Name: <%= college.school_name%></h3>
     <ul class="list-group list-group-flush">
@@ -16,11 +18,16 @@
     </ul>
     <a class="btn btn-success btn-sm" href="mailto:<%=college.email %>" target="_blank">Email</a>
 
+ 
 
   <% end %>
 
 </div>
 </div>
+
+
+</div>
+</body>
 
 
 </div>

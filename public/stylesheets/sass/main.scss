@@ -1,0 +1,181 @@
+//colors
+$golden-wheat: #a39274;
+$deep-grey: #252523;
+$soft-wheat: #dfd8c8;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body{
+ font-family: 'Lato', sans-serif;
+}
+
+.navbar{
+  background-color: black;
+  opacity: 0.8
+}
+
+.nav-logo{
+  width: 125px;
+}
+
+ .nav-item{
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+
+ }
+ .main-page-home-section{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)) ,url(../images/main-image.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 95vh;
+    background-attachment: fixed;
+    position: relative;
+ }
+
+
+ .home-section{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 70%;
+
+    &__heading{
+      color:#F8F8FF;
+      letter-spacing: 2px;
+      text-align: center;
+      font-size: 65px;
+      font-weight: 700;
+
+    }
+    &__button,
+    &__button:visited{
+    
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 25px;
+     color:#F8F8FF;
+    border: 1px solid #fff;
+    font-size: 15px;
+    margin-top: 20px;
+
+    }
+
+  }
+  .about{
+   background-color: $golden-wheat;
+    min-height: 300px;
+    position: relative;
+   
+    &__section{
+      padding-top: 100px;
+      padding-bottom: 50px;
+     
+    }
+    &__heading{
+      font-size: 25px;
+      padding: 10px;
+    }
+    &__p{
+      font-size: 18px;
+      padding: 3px;
+    }
+  
+    &__logo{
+      width: 250px;
+      height: auto;
+      position: absolute;
+        top: -100px;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    &__heading{
+      font-size: 25px;
+      color: white;
+
+    }
+
+  }
+
+  .works{
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    &__heading{
+      font-size: 35px;
+      padding-bottom: 30px;
+    }
+    &__side{
+      font-size: 25px;
+      padding: 10px;
+      border-bottom: 3px solid $soft-wheat;
+
+    }
+    &__p{
+      font-size: 18px;
+      padding: 3px;
+
+    }
+  }
+.right{
+  position: relative;
+
+  &__photo {
+      width: 55%;
+      box-shadow: 0 1.5rem 4rem rgba(#000, .4);
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+      transition: all .2s;
+      outline-offset: 2rem;
+
+       &-p1 {
+          width: 20%;
+          left: 0;
+          top: -2rem;
+        }
+
+      &-p2 {
+          right: 0;
+          top: 2rem;
+
+        
+      }
+
+      &-p3 {
+          left: 20%;
+          top: 10rem;
+
+         
+      }
+
+      &:hover {
+         transform: scale(1.05) translateY(-.5rem);
+          box-shadow: 0 2.5rem 4rem rgba(#000, .5);
+          z-index: 20;
+      }
+
+  }
+
+  &:hover &__photo:not(:hover) {
+      transform: scale(.95);
+  }
+
+  }
+
+ 
