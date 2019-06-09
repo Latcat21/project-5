@@ -45,8 +45,7 @@ body{
     position: relative;
  }
 
-
- .home-section{
+.home-section{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -126,56 +125,29 @@ body{
       border-bottom: 3px solid $soft-wheat;
 
     }
+    &__second{
+      margin-top: 50px;
+    }
     &__p{
       font-size: 18px;
       padding: 3px;
 
     }
   }
-.right{
-  position: relative;
+.right__photo {
+      width: 90%;
+     border-radius: 8px;
+     padding: 10px
+     
+     }
+// end of home page
+.login,
+.register
+{
+  margin-top: 150px;
+  width: 800px;
+ 
+}
 
-  &__photo {
-      width: 55%;
-      box-shadow: 0 1.5rem 4rem rgba(#000, .4);
-      border-radius: 2px;
-      position: absolute;
-      z-index: 10;
-      transition: all .2s;
-      outline-offset: 2rem;
-
-       &-p1 {
-          width: 20%;
-          left: 0;
-          top: -2rem;
-        }
-
-      &-p2 {
-          right: 0;
-          top: 2rem;
-
-        
-      }
-
-      &-p3 {
-          left: 20%;
-          top: 10rem;
-
-         
-      }
-
-      &:hover {
-         transform: scale(1.05) translateY(-.5rem);
-          box-shadow: 0 2.5rem 4rem rgba(#000, .5);
-          z-index: 20;
-      }
-
-  }
-
-  &:hover &__photo:not(:hover) {
-      transform: scale(.95);
-  }
-
-  }
-
+ 
  

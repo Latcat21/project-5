@@ -1,37 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
 <body>
-<div class="container">
+  <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
+           
+            
+            <h1 class="py-5 mt-5 text-center">
+             Welcome to your account</h1>
+   <section>
+   <div class="container">
+     <div class="row">
+  
+          <div class="col-md-8">
+            <div class="card">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                      <td>Recruiters Name</td>
+                      <td><%= @college.name %></td>
+                    <td>
+                        <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
+                          <i class="fas fa-angle-double-right"></i> Edit
+                        </a>
+                    </td>
+                  </tr>
+                  <tr>
+                   <td>School Name</td>
+                   <td><%= @college.school_name %></td>
+                    <td>
+                        <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
+                          <i class="fas fa-angle-double-right"></i> Edit
+                        </a>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>School Location</td>
+                      <td><%= @college.location %></td>
+                   <td>
+                      <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
+                        <i class="fas fa-angle-double-right"></i> Edit
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>Email</td>
+                      <td><%=@college.email%></td>
+                    <td>
+                        <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
+                          <i class="fas fa-angle-double-right"></i> Edit
+                        </a>
+                    </td>
+                  </tr>
+                  <tr>
+                   
+                 </tbody>
+              </table>
+            </div> 
+          </div> 
+          
+          <div class="col-md-4">
+            <div class="card text-center  mb-3">
+              <div class="card-body bg-light">
+                <h4>Posistions I Need</h4>
+                <i class="fas fa-pencil-alt py-2"></i> 
+                
+                <%@positions.each do |position| %>
+                  
+                <h5>  <%=position.name%></h5>
+                  
+              <% end %>
+
+              <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
+                <i class="fas fa-angle-double-right "></i> Edit
+              </a>
+              
+               
+                
+              </div> 
+            </div> 
+          
+        
+  
+
+ 
+  
+  </div> 
+  <a href="/colleges/matching-players" class="btn btn-success btn-block mt-3" data-toggle="modal" data-target="#addCategoryModal">
+    <i class="fas fa-plus "></i> Find Players That Need you
+  </a>
+
+    </section>
+    
+  </div>
+  </body>
+  
 
 
 
-<h1>Welcome to your account page</h1>
 
-
-<h3>Recruiters name  <%= @college.name %> </h3>
-<h3>School  <%= @college.school_name %> </h3>
-<h3>Location  <%= @college.location %> </h3>
-<h3>Email <%=@college.email%>
-
-
-<div>
-<h2> positions I need filled </h2>
-
-<ul>
-
-<%@positions.each do |position| %>
-
-<li><%=position.name%>
- <input type="hidden" name="_method" value="DELETE">
-            <button>Delete</button>
-          </form>
-</li>
-
-<% end %>
-</ul>
 </div>
-
-<a href="/colleges/matching-players">Find Players That need you</a>
-
-<a href="/colleges/<%= @college.id %>/edit">(Edit account)</a>
-
-</div>
-</body>
+</html>

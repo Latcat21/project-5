@@ -1,14 +1,31 @@
 <body>
 <div class="container">
-<h2>Register</h2>
+<div class="register">
+<h2 class="mb-3">Register</h2>
 <form action="/users/register" method="POST">
-  <input type="text" name="username" placeholder="username" /> <br>  
-  <input type="password" name="password" placeholder="password"><br>
+<div class="form-group">
+<label>Username</label>
+  <input class="form-control" type="text" name="username" placeholder="username" />  
+  </div>
+  <div class="form-group">
+  <label>Password</label>
+  <input class="form-control" type="password" name="password" placeholder="password">
+  </div>
   <h2>Select Which User you are</h2>
-  <input type="radio" name="account_type" value="college">College<br>
-  <input type="radio" name="account_type" value="player">Player<br>
-  <button>Register</button>
+  <div class="form-check">
+  
+  <input  class="form-check-input" type="radio" name="account_type" value="college">
+  <label class="form-check-label">College</label>
+  </div>
+  <div class="form-check">
+  
+  <input class="form-check-input" type="radio" name="account_type" value="player">
+  <label class="form-check-label">Player</label>
+
+  </div>
+  <button class="btn btn-primary">Register</button>
 </form>
+</div>
 </div>
 
 </body>

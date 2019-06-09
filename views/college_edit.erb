@@ -1,31 +1,42 @@
 <body>
-<div class="container">
-
-
-
-
-<h1>Edit your account</h1>
-
-
-
-<form action="/colleges/account/<%=@college.id %>" method="POST">
-  <input type="hidden" name="_method" value="PUT" />
-  <input type="text" name="name" value="<%=@college.name %>" /> <br>   
-  <input type="text" name="school_name" value=" <%=@college.school_name%>"><br>
-  <input type="text" name="location" value="<%= @college.location %>">
-  <input type="text" name="email" value="<%= @college.email %>"><br>
-  
-  
-  
-  <h2>Edit Your positions </h2>
-
-<ul>
-<% @positions.each do |position| %>
-
-  <li>
-    <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
-  </li>
-  <% end %>
-  </ul>
-  <button>Update Account</button>
-</form>
+    <div class="container my-5 mt-5">
+    <div class="player-reg shadow-lg p-3 my-5 bg-white rounded">
+    
+    <h1 class="mt-5">Edit your account</h1>
+    <form action="/colleges/account/<%=@college.id %>" method="POST">
+      <input type="hidden" name="_method" value="PUT" />
+    <div class="form-group">
+        <label>Rercruiters name</label>
+      <input class="form-control" type="text" name="name" value="<%=@college.name %>"  /> 
+    </div>
+      <div class="form-group">
+      <label>School Name</label>
+      <input class="form-control" type="text" name="school_name" value=" <%=@college.school_name%>">
+      </div>
+      <div class="form-group">
+      <label>Location</label>
+      <input class="form-control" type="text" name="location" value="<%= @college.location %>">
+      </div>
+     
+      <div class="form-group">
+      <label>Email</label>
+     <input class="form-control" type="text" name="email" value="<%= @college.email %>">
+      </div>
+      
+      
+      
+      <h2 class="mt-5">Edit Your Positions</h2>
+    
+    
+    <% @positions.each do |position| %>
+    
+      
+        <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
+      
+      <% end %>
+      </ul>
+      <button class="btn btn-primary mt-3">Update Account</button>
+    </form>
+    </div>
+    </div>
+    </body>
