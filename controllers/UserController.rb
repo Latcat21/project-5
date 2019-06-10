@@ -11,15 +11,10 @@ class UserController < ApplicationController
     # find user by username
     user = User.find_by username: params[:username]
 
-    # pp user # help us as devs see whether its a username or pw issue
-    # or you could use binding.pry
-
     pw = params[:password]
-
-    # if the user exists and password is correct --
-    # password is now being checked using bcrypt
+    
     if user && user.authenticate(pw) 
-      # add stuff to session: loggedin, username, message
+     
       session[:logged_in] = true
       session[:username] = user.username
       session[:user_id] = user.id
@@ -46,7 +41,7 @@ class UserController < ApplicationController
         message: "Invalid username or password."
       }
       
-      # redirect to /login so they can reattempt
+     
       redirect '/users/login'
     end
 
@@ -65,7 +60,7 @@ class UserController < ApplicationController
     user = User.find_by username: params[:username]
           # User.find_by({ :username => params[:username] })
 
-    # beginning of what should happen if user doesn't exist
+  
     if !user
 
       # create user 
@@ -118,26 +113,17 @@ else
   end # post
 
 
-
-
-
-
-
-
-
-
-
-  # logout
+ # logout
   get '/logout' do
     
-    username = session[:username] # grab username before destroying session...
+    username = session[:username] 
 
     session.destroy
 
     session[:message] = {
       success: true,
       status: "neutral",
-      message: "User #{username} logged out." #...so that we can use it here
+      message: "User #{username} logged out."
     }
 
     redirect '/users/login'

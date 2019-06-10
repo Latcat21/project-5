@@ -79,14 +79,14 @@
       <div class="col-md-3">
         <div class="card text-center bg-light mb-3">
           <div class="card-body">
-              <h4>Posistions I Play</h4>
+              <h4 class="pb-2">Posistions I Play</h4>
               <i class="fas fa-baseball"></i></i> 
-              <ul>
+              
 
                   <% @positions.each do |position| %>
-                    <li>
-                      <%= position.name%>
-                    </li>
+                    
+                    <h5>  <%= position.name%> </h5>
+                    
                 
                 
                   <% end %>
@@ -101,8 +101,8 @@
 
         <div class="card text-center bg-light  mb-3">
           <div class="card-body">
-            <h4>My Stats</h4>
-            <i class="fas fa-baseball-ball"></i>
+            <h4 class="pb-2" >My Stats</h4>
+            <i class="fas fa-baseball-ball pb-3"></i>
             <h5> <%= @player.stats %> </h5>
            
             <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
@@ -115,7 +115,7 @@
       </div>
     </div>
   </div>
-  <a href="/players/matching-colleges" class="btn btn-success btn-block mt-3">
+  <a href="/players/matching-colleges" class="btn btn-secondary btn-block mt-3">
     <i class="fas fa-plus "></i> Find Colleges That Need You
   </a>
 </section>

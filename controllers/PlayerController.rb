@@ -101,11 +101,7 @@ put '/account/:id' do
   end
 
   redirect "/players/account"
-
-end
-
-
-
+  end
 
 end
 

@@ -114,6 +114,7 @@ body{
   .works{
     padding-top: 50px;
     padding-bottom: 50px;
+   
 
     &__heading{
       font-size: 35px;
@@ -136,9 +137,20 @@ body{
   }
 .right__photo {
       width: 90%;
+    
      border-radius: 8px;
      padding: 10px
      
+     }
+
+     .gallery{
+       background-color: $golden-wheat;
+      padding: 50px;
+
+      h1{
+        color: white;
+        padding: 25px;
+      }
      }
 // end of home page
 .login,
@@ -148,14 +160,13 @@ body{
   width: 800px;
  
 }
-
 .player-match,
 .college-match{
   padding-top: 150px;
   width: 1200px;
   margin: 0 auto;
 }
-
+   
 /// cards  
 .player-card{
   height: 400px;
@@ -166,7 +177,7 @@ body{
   margin: 20px;
   position: relative;
   animation: moveInLeft 2s;
-
+  
   &__details {
     padding: 3rem;
 
@@ -174,14 +185,12 @@ body{
         list-style: none;
         width: 80%;
         margin: 0 auto;
-
-        li {
+       li {
             text-align: center;
             font-size: 18px;
             padding: 5px;
            
-         
-            &:not(:last-child) {
+          &:not(:last-child) {
                 border-bottom: 1px solid $deep-grey;
             }
         }
@@ -223,9 +232,6 @@ body{
 
 }
 
-
-
- 
 @keyframes moveInLeft {
   0% {
       opacity: 0;
