@@ -149,5 +149,96 @@ body{
  
 }
 
+.player-match,
+.college-match{
+  padding-top: 150px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/// cards  
+.player-card{
+  height: 400px;
+  width: 350px;
+  float: left;
+  box-shadow: 0 1.5rem 4rem rgba(#000, .15);
+  overflow: hidden;
+  margin: 20px;
+  position: relative;
+  animation: moveInLeft 2s;
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+        list-style: none;
+        width: 80%;
+        margin: 0 auto;
+
+        li {
+            text-align: center;
+            font-size: 18px;
+            padding: 5px;
+           
+         
+            &:not(:last-child) {
+                border-bottom: 1px solid $deep-grey;
+            }
+        }
+    }
+}
+
+}
+
+.college-card{
+  height: 350px;
+  width: 275px;
+  float: left;
+  box-shadow: 0 1.5rem 4rem rgba(#000, .15);
+  overflow: hidden;
+  margin: 20px;
+  position: relative;
+  animation: moveInLeft 2s;
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+        list-style: none;
+        width: 80%;
+        margin: 0 auto;
+
+        li {
+            text-align: center;
+            font-size: 18px;
+            padding: 5px;
+           
+         
+            &:not(:last-child) {
+                border-bottom: 1px solid $deep-grey;
+            }
+        }
+    }
+}
+
+}
+
+
+
  
- 
+@keyframes moveInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-10rem);
+  }
+
+  80% {
+      transform: translateX(1rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+

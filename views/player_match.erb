@@ -1,15 +1,33 @@
 <body>
-<div class="container">
+<div class="player-match">
 
-<h1>welcome</h1>
-<ul>
+
+
 <% @available_players.each do |player| %>
-<li>
-<%= player.name%>
+
+<div class="player-card">
+              
+                  <h4 class="player-care__heading text-center mt-5">
+                    <%=player.name %>
+                    </h4>
+                    <div class="player-card__details">
+                        <ul>
+                            <li>School Name: <%=player.school_name%></li>
+                            <li>Location: <%= player.location %></li>
+                            <li>Height: <%= player.height %>'in</li>
+                            <li>Weight: <%= player.weight %>'lbs</li>
+                            <li>Stats:<%= player.stats %></li>
+                            
+                        </ul>
+                        <a class="btn btn-primary btn-block mt-3" href="mailto:<%=player.email %>" target="_blank">Email</a>
+                        
+                        </div>
+                    </div>
+                    
 
 <%end%>
 
-</ul>
+
 </div>
 
 </body>

@@ -1,34 +1,38 @@
 <body>
-<div class="container">
+<div class="college-match">
 
 
-<h1>Colleges that have your positions open</h1>
-<div class="row mt-2 mb-2">
-<div class='card text-center bg-light my-3'>
+
+
 
 
 
   <% @open_positions.each do |college| %>
   
-    
-    <h2 class="card-header">College Name: <%= college.school_name%></h3>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item">location:  <%= college.location%></li>
-    <li class="list-group-item">Recruiters Name: <%= college.name%></li>
-    </ul>
-    <a class="btn btn-success btn-sm" href="mailto:<%=college.email %>" target="_blank">Email</a>
+    <div class="college-card">
+    <div class="college-card__picture ">
+     
 
- 
+    <h4 class="college-card__heading text-center mt-5">
+                    <%=college.school_name %>
+                    </h4>
+<div class="college-card__details">
+
+    <ul>
+    <li>Location: <%= college.location%></li>
+    <li>Recruiter: <%= college.name%></li>
+    </ul>
+    <a class="btn btn-primary btn-block mt-4" href="mailto:<%=college.email %>" target="_blank">Email</a>
+</div>
+ </div>
 
   <% end %>
 
-</div>
-</div>
 
-
-</div>
-</body>
 
 
 </div>
 </body>
+
+
+
