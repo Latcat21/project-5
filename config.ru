@@ -1,11 +1,8 @@
 require 'sinatra/base'
 require './controllers/ApplicationController'
 require './controllers/UserController'
-
 require './controllers/CollegeController'
 require './controllers/PlayerController'
-
-
 require './models/User'
 require './models/College'
 require './models/Player'
