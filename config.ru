@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/cross_origin'
 require './controllers/ApplicationController'
 require './controllers/UserController'
 require './controllers/CollegeController'
