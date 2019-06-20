@@ -1,35 +1,19 @@
 <body>
 <div class="college-match">
-
-
-
-
-
-
-
   <% @open_positions.each do |college| %>
-  
-    <div class="college-card">
-    <div class="college-card__picture ">
-     
-
+  <div class="college-card">
     <h4 class="college-card__heading text-center mt-5">
-                    <%=college.school_name %>
-                    </h4>
+      <%=college.school_name %>
+    </h4>
 <div class="college-card__details">
-
-    <ul>
+  <ul>
     <li>Location: <%= college.location%></li>
     <li>Recruiter: <%= college.name%></li>
-    </ul>
+  </ul>
     <a class="btn btn-primary btn-block mt-4" href="mailto:<%=college.email %>" target="_blank">Email</a>
 </div>
- </div>
-
-  <% end %>
-
-
-
+</div>
+<% end %>
 
 </div>
 </body>

@@ -57,18 +57,16 @@ body{
       text-align: center;
       font-size: 65px;
       font-weight: 700;
-
     }
     &__button,
     &__button:visited{
-    
-    text-decoration: none;
-    display: inline-block;
-    padding: 10px 25px;
-     color:#F8F8FF;
-    border: 1px solid #fff;
-    font-size: 15px;
-    margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 25px;
+       color:#F8F8FF;
+      border: 1px solid #fff;
+      font-size: 15px;
+      margin-top: 20px;
 
     }
 
@@ -96,16 +94,15 @@ body{
       width: 250px;
       height: auto;
       position: absolute;
-        top: -100px;
-        left: 45%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+      top: -100px;
+      left: 45%;
+      transform: translate(-50%, -50%);
+      text-align: center;
     }
     &__heading{
       font-size: 25px;
       color: white;
-
-    }
+ }
 
   }
 
@@ -131,22 +128,15 @@ body{
       padding: 3px;
    }
   }
-.right__photo {
-      width: 90%;
-      border-radius: 8px;
-     padding: 10px
-     
-     }
-
-.gallery{
+   .gallery{
        background-color: $golden-wheat;
-      padding: 50px;
+       padding: 50px;
 
       h1{
         color: white;
         padding: 25px;
       }
-     }
+    }
 
      
 // end of home page
@@ -162,11 +152,12 @@ body{
   padding-top: 150px;
   width: 1200px;
   margin: 0 auto;
+ 
 }
    
 /// cards  
 .player-card{
-  min-height: 400px;
+  height: 400px;
   width: 350px;
   float: left;
   box-shadow: 0 1.5rem 4rem rgba(#000, .15);
@@ -192,11 +183,11 @@ body{
         }
     }
 }
-
 }
 
+
 .college-card{
-  min-height: 350px;
+  height: 350px;
   width: 275px;
   float: left;
   box-shadow: 0 1.5rem 4rem rgba(#000, .15);
@@ -204,7 +195,7 @@ body{
   margin: 20px;
   position: relative;
   animation: moveInLeft 2s;
-
+    
   &__details {
     padding: 3rem;
 
@@ -218,15 +209,13 @@ body{
             font-size: 18px;
             padding: 5px;
            
-         
             &:not(:last-child) {
-                border-bottom: 1px solid $deep-grey;
-            }
+              border-bottom: 1px solid $deep-grey;
+          }
         }
+      }
     }
-}
-
-}
+  }
 
 @keyframes moveInLeft {
   0% {

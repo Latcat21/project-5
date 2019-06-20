@@ -1,41 +1,26 @@
 <body>
 <div class="player-match">
-
-
-
-<% @available_players.each do |player| %>
+    <% @available_players.each do |player| %>
 
 <div class="player-card">
-              
-                 
-                  <div class="player-card__heading player-card__logo dark-overlay"> 
-                    <h4 class="player-cardtext-center mt-5 text-center ">
-                    
-                    <%=player.name %> 
-                    </h4> 
-                
-                                     
-                                </div>
-                   
-                   
-                    <div class="player-card__details">
-                        <ul>
-                            <li>School Name: <%=player.school_name%></li>
-                            <li>Location: <%= player.location %></li>
-                            <li>Height: <%= player.height %>'in</li>
-                            <li>Weight: <%= player.weight %>'lbs</li>
-                            <li>Stats:<%= player.stats %></li>
-                            
-                        </ul>
-                        <a class="btn btn-primary btn-block mt-3" href="mailto:<%=player.email %>" target="_blank">Email</a>
-                        
-                        </div>
-                    </div>
+    <div class="player-card__heading player-card__logo dark-overlay"> 
+        <h4 class="player-cardtext-center mt-5 text-center ">
+            <%=player.name %> 
+        </h4> 
+    </div>
+        <div class="player-card__details">
+            <ul>
+                <li>School Name: <%=player.school_name%></li>
+                <li>Location: <%= player.location %></li>
+                <li>Height: <%= player.height %>'in</li>
+                <li>Weight: <%= player.weight %>'lbs</li>
+                li>Stats:<%= player.stats %></li>
+            </ul>
+                <a class="btn btn-primary btn-block mt-3" href="mailto:<%=player.email %>" target="_blank">Email</a>
+        </div>
+    </div>
                     
 
 <%end%>
-
-
 </div>
-
 </body>
