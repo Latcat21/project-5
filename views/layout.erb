@@ -40,21 +40,7 @@
 
   </header>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <% if session[:message] %>
+<% if session[:message] %>
     <p class="message <%= session[:message][:status] %>"><%= session[:message][:message] %></p>
   <% 
     end
