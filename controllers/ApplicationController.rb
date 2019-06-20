@@ -1,24 +1,42 @@
 class ApplicationController < Sinatra::Base
   
-
-  # find out what bundler is and what we use it for
+# find out what bundler is and what we use it for
   require 'bundler'
   Bundler.require()
-  
   require './config/environments'
 
   # find out exactly what sessions are and what we use them for ("locker" in coat check)
   enable :sessions
 
+  use Rack::Session::Cookie,  :key => 'rack.session',
+                              :path => '/',
+                              :secret => "as;dlfkja;sdlfkja;sldkfja;lskdjfa;lsdkjf"
+
+
+  # Set up CORS
+  register Sinatra::CrossOrigin
+
+  configure do
+    enable :cross_origin
+  end
+
+  set :allow_origin, :any
+  set :allow_methods, [:get, :post, :put, :options, :patch, :delete, :head]
+  set :allow_credentials, true
+
+  options '*' do
+    response.headers["Allow"] = "HEAD,GET,PUT,PATCH,POST,DELETE,OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "X-Requested-Wtih, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+    200
+  end
+  
+  
   #client sends request
   #server sends response  
 
   # ActiveRecord is an ORM that lets us communicate with our psql database
   # it lets us create models with associations, meaning: models have relationships with other models
-  ActiveRecord::Base.establish_connection(
-    :adapter => 'postgresql',
-    :database => 'the_recruiter'
-  )
+
   
   # we write routes that handle requests, but we use 
   # middleware to intercept any clent request before it gets to the the correct route
@@ -41,13 +59,7 @@ class ApplicationController < Sinatra::Base
 
   end
 
-  get('/demo') { 
-    "demo"
-  }
-
-  # app.get('/demo', (req, res) => {
-  #   res.send('demo')
-  # })
+ 
 
 
   get '*' do
