@@ -6,14 +6,14 @@ class ApplicationController < Sinatra::Base
   require './config/environments'
 
   # find out exactly what sessions are and what we use them for ("locker" in coat check)
-  enable :sessions
+  # enable :sessions
 
   use Rack::Session::Cookie,  :key => 'rack.session',
                               :path => '/',
-                              :secret => "as;dlfkja;sdlfkja;sldkfja;lskdjfa;lsdkjf"
+                              :secret => "lasdjfalksdjflaksdfalsdfjl"
 
 
-  # Set up CORS
+ 
   register Sinatra::CrossOrigin
 
   configure do
@@ -59,10 +59,7 @@ class ApplicationController < Sinatra::Base
 
   end
 
- 
-
-
-  get '*' do
+ get '*' do
     halt 404
   end
 
