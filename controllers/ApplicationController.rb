@@ -4,6 +4,8 @@ class ApplicationController < Sinatra::Base
   # find out what bundler is and what we use it for
   require 'bundler'
   Bundler.require()
+  
+  require './config/environments'
 
   # find out exactly what sessions are and what we use them for ("locker" in coat check)
   enable :sessions
