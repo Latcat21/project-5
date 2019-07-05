@@ -8,7 +8,8 @@ post '/account' do
   new_player= Player.new
   new_player.name = params[:name]
   new_player.school_name = params[:school_name]
-  new_player.location = params[:location]
+  new_player.state = params[:state]
+  new_player.city = params[:city]
   new_player.height = params[:height]
   new_player.weight = params[:weight]
   new_player.stats = params[:stats]
@@ -71,7 +72,8 @@ put '/account/:id' do
 
   updated_player.name = params[:name]
   updated_player.school_name = params[:school_name]
-  updated_player.location = params[:location]
+  updated_player.state = params[:state]
+  updated_player.city = params[:city]
   updated_player.height = params[:height]
   updated_player.weight = params[:weight]
   updated_player.stats = params[:stats]

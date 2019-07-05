@@ -71,6 +71,8 @@ body{
     }
 
   }
+
+  // The about seciont
   .about{
    background-color: $golden-wheat;
     min-height: 300px;
@@ -103,8 +105,8 @@ body{
       font-size: 25px;
       color: white;
  }
-
-  }
+}
+// How it works section
 
   .works{
     padding-top: 50px;
@@ -139,7 +141,8 @@ body{
     }
 
      
-// end of home page
+// End of home page
+//Player & college login / Register / Edit / match pages
 .login,
 .register
 {
@@ -155,9 +158,9 @@ body{
  
 }
    
-/// cards  
+/// Cards that list the player and college info
 .player-card{
-  height: 400px;
+  height: 600px;
   width: 350px;
   float: left;
   box-shadow: 0 1.5rem 4rem rgba(#000, .15);
@@ -184,11 +187,9 @@ body{
     }
 }
 }
-
-
 .college-card{
-  height: 350px;
-  width: 275px;
+  height: 600px;
+  width: 350px;
   float: left;
   box-shadow: 0 1.5rem 4rem rgba(#000, .15);
   overflow: hidden;

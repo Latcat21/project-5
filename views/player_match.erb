@@ -4,14 +4,15 @@
 
 <div class="player-card">
     <div class="player-card__heading player-card__logo dark-overlay"> 
-        <h4 class="player-cardtext-center mt-5 text-center ">
+        <h4 class="text-center mt-5 text-center ">
             <%=player.name %> 
         </h4> 
     </div>
         <div class="player-card__details">
             <ul>
                 <li>School Name: <%=player.school_name%></li>
-                <li>Location: <%= player.location %></li>
+                <li>State: <%= player.state %></li>
+                <li>City: <%= player.city %></li>
                 <li>Height: <%= player.height %>'in</li>
                 <li>Weight: <%= player.weight %>'lbs</li>
                 <li>Stats:<%= player.stats %></li>

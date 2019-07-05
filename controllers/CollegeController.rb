@@ -13,7 +13,8 @@ post '/account' do
   new_college = College.new
   new_college.name = params[:name]
   new_college.school_name = params[:school_name]
-  new_college.location = params[:location]
+  new_college.state = params[:state]
+  new_college.city = params[:city]
   new_college.email = params[:email]
   new_college.user_id =  session[:user_id]
 
@@ -76,7 +77,8 @@ put '/account/:id' do
   @college = College.find params[:id]
   @college.name = params[:name]
   @college.school_name = params[:school_name]
-  @college.location = params[:location]
+  @college.state = params[:state]
+  @college.city = params[:city]
   @college.email = params[:email]
   @college.save
 
@@ -101,7 +103,5 @@ put '/account/:id' do
 redirect "/colleges/account"
   
 end
-
-
 
 end

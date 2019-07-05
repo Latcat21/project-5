@@ -1,47 +1,56 @@
 
 <body>
-<div class="container my-5 mt-5">
-<div class="college shadow-lg p-3 my-5 bg-white rounded">
-
-
-<h1 class=" mt-5">Welcome to your account page</h1>
-<h5 class="mt-5 pb-3">please fill out the following information to create your account</h3>
-
-
-
-
-
-
-
-<form action="/colleges/account" method="POST">
-
-<div class="form-group">
-<label>Rercruiters name</label>
-  <input class="form-control" type="text" name="name" placeholder="recruiter name" />   
+  <div class="container my-5 mt-5">
+    <div class="college shadow-lg p-3 my-5 bg-white rounded">
+      <h1 class=" display-4 mt-5">Welcome to your account page</h1>
+        <h5 class="mt-5 pb-3">please fill out the following information to create your account</h3>
+    <form action="/colleges/account" method="POST">
+      <div class="form-group">
+        <input 
+        class="form-control" 
+        type="text" 
+        name="name" 
+        placeholder="recruiter name" />   
   </div> 
-  <label>School Name</label>
   <div class="form-group">
-  <input class="form-control" type="text" name="school_name" placeholder="school name">
+    <input class="form-control" 
+    type="text" 
+    name="school_name" 
+    placeholder="school name">
   </div>
   <div class="form-group">
-  <label>Location</label>
-  <input class="form-control" type="text" name="location" placeholder="location">
+    <input
+     class="form-control"
+      type="text" 
+      name="state"
+      placeholder="state">
   </div>
   <div class="form-group">
-  <label>Email</label>
-  <input class="form-control" type="text" name="email" placeholder="email">
+    <input
+     class="form-control"
+      type="text" 
+      name="city"
+      placeholder="city">
+      
   </div>
-  
+  <div class="form-group">
+  <input 
+  class="form-control" 
+  type="text" 
+  name="email" 
+  placeholder="email"
+  >
+  </div>
   
   <h2>Select the positions you need filled</h2>
-
-
-<% @positions.each do |position| %>
-
-
-    <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
- 
-  <% end %>
+    <%# looping over the positions and storing them in array %>
+    <% @positions.each do |position| %>
+  <input 
+  type="checkbox"
+   name="position[]"
+    value="<%=position.id%>"> 
+    <%=position.name %><br>
+ <% end %>
   </ul>
   <button class="btn btn-primary mt-3">create account</button>
 </form>

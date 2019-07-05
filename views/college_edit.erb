@@ -14,25 +14,21 @@
       <input class="form-control" type="text" name="school_name" value=" <%=@college.school_name%>">
       </div>
       <div class="form-group">
-      <label>Location</label>
-      <input class="form-control" type="text" name="location" value="<%= @college.location %>">
+      <label>State</label>
+      <input class="form-control" type="text" name="state" value="<%= @college.state %>">
+      </div>
+      <div class="form-group">
+      <label>City</label>
+      <input class="form-control" type="text" name="city" value="<%= @college.city %>">
       </div>
      
       <div class="form-group">
       <label>Email</label>
      <input class="form-control" type="text" name="email" value="<%= @college.email %>">
       </div>
-      
-      
-      
       <h2 class="mt-5">Edit Your Positions</h2>
-    
-    
-    <% @positions.each do |position| %>
-    
-      
+        <% @positions.each do |position| %>
         <input type="checkbox" name="position[]" value="<%=position.id%>"> <%=position.name %><br>
-      
       <% end %>
       </ul>
       <button class="btn btn-primary mt-3">Update Account</button>

@@ -37,8 +37,17 @@
                     </td>
                   </tr>
                   <tr>
-                      <td>School Location</td>
-                      <td><%= @college.location %></td>
+                      <td>State</td>
+                      <td><%= @college.state %></td>
+                   <td>
+                      <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
+                        <i class="fas fa-angle-double-right"></i> Edit
+                      </a>
+                    </td>
+                  </tr>
+                   <tr>
+                      <td>City</td>
+                      <td><%= @college.city %></td>
                    <td>
                       <a href="/colleges/<%= @college.id %>/edit" class="btn btn-secondary">
                         <i class="fas fa-angle-double-right"></i> Edit

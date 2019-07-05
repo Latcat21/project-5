@@ -15,7 +15,8 @@ CREATE TABLE colleges(
   id SERIAL PRIMARY KEY,
   name VARCHAR(32),
   school_name VARCHAR(255),
-  location VARCHAR(255), 
+  state VARCHAR(255), 
+  city VARCHAR(255), 
   email VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 );
@@ -23,7 +24,8 @@ CREATE TABLE players(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   school_name VARCHAR(255),
-  location VARCHAR(32),
+  state VARCHAR(255), 
+  city VARCHAR(255), 
   height NUMERIC NOT NULL DEFAULT 'NaN',
   weight NUMERIC NOT NULL DEFAULT 'NaN',
   stats VARCHAR(255),
