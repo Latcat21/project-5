@@ -1,12 +1,10 @@
 class ApplicationController < Sinatra::Base
   
-# find out what bundler is and what we use it for
   require 'bundler'
   Bundler.require()
   require './config/environments'
 
-  # find out exactly what sessions are and what we use them for ("locker" in coat check)
-  # enable :sessions
+
 
   use Rack::Session::Cookie,  :key => 'rack.session',
                               :path => '/',
@@ -30,16 +28,6 @@ class ApplicationController < Sinatra::Base
     200
   end
   
-  
-  #client sends request
-  #server sends response  
-
-  # ActiveRecord is an ORM that lets us communicate with our psql database
-  # it lets us create models with associations, meaning: models have relationships with other models
-
-  
-  # we write routes that handle requests, but we use 
-  # middleware to intercept any clent request before it gets to the the correct route
   use Rack::MethodOverride
   set :method_override, true
   

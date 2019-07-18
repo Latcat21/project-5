@@ -40,8 +40,6 @@ class UserController < ApplicationController
         status: "bad",
         message: "Invalid username or password."
       }
-      
-     
       redirect '/users/login'
     end
 
@@ -58,7 +56,7 @@ class UserController < ApplicationController
 
     # check if user exists 
     user = User.find_by username: params[:username]
-          # User.find_by({ :username => params[:username] })
+       # User.find_by({ :username => params[:username] })
 
   
     if !user
