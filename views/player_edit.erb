@@ -2,6 +2,7 @@
     <div class="container my-5 mt-5">
     <div class="player-reg shadow-lg p-3 my-5 bg-white rounded">
     <h1 class="mt-5">Edit your account</h1>
+  
     <form action="/players/account/<%=@player.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT" />
     <div class="form-group">

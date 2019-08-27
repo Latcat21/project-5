@@ -2,10 +2,10 @@
 <html lang="en">
 
 <body>
-    <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
-           <h1 class="py-5 mt-5 text-center">
-         Welcome to your account</h1>
-         <section id="posts">
+  <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
+    <h1 class="py-5 mt-5 text-center">
+      Welcome to your account</h1>
+<section id="posts">
   <div class="container">
     <div class="row">
       <div class="col-md-9">
@@ -14,42 +14,42 @@
              <tbody>
               <tr>
                 <td>Player Name</td>
-                  <td><%= @player.name %> </td>
-                  <td>
+              <td><%= @player.name %> </td>
+            <td>
             <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
           <i class="fas fa-angle-double-right"></i> Edit
             </a>
             </td>
-              </tr>
+            </tr>
               <tr>
-                      <td>School Name</td>
-                       <td> <%= @player.school_name %></td>
-                       <td>
-                         <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                           <i class="fas fa-angle-double-right"></i> Edit
-                         </a>
-                       </td>
-              </tr>
-              <tr>
-              <td>State</td>
-                    <td><%= @player.state %></td>
-                   <td>
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
+                <td>School Name</td>
+                  <td> <%= @player.school_name %></td>
+                    <td>
+                      <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
                         <i class="fas fa-angle-double-right"></i> Edit
-                      </a>
-                    </td>
-              </tr>
-              <tr>
-              <td>City</td>
-                    <td><%= @player.city %></td>
-                   <td>
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                    <i class="fas fa-angle-double-right"></i> Edit
-                      </a>
+                        </a>
                   </td>
               </tr>
               <tr>
-                  <td>Weight</td>
+              <td>State</td>
+                <td><%= @player.state %></td>
+                  <td>
+                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Edit
+                    </a>
+                  </td>
+              </tr>
+              <tr>
+              <td>City</td>
+                <td><%= @player.city %></td>
+                  <td>
+                  <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
+                    <i class="fas fa-angle-double-right"></i> Edit
+                  </a>
+                  </td>
+              </tr>
+              <tr>
+                <td>Weight</td>
                   <td><%= @player.weight %>'lbs</td>
                   <td>
                     <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">

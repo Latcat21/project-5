@@ -5,47 +5,34 @@ class UserController < ApplicationController
     erb :login
   end
 
-  # do the login 
+  #  the login 
   post '/login' do
-
     # find user by username
     user = User.find_by username: params[:username]
-
     pw = params[:password]
     
     if user && user.authenticate(pw) 
-     
       session[:logged_in] = true
       session[:username] = user.username
       session[:user_id] = user.id
-      session[:message] = {
-        success: true,
-        status: "good",
-        message: "Logged in as #{user.username}"
-      }
-
+      
       if user.player_user == true
-
         redirect '/players/account'
-        
-    else
+      else
        redirect '/colleges/account'
-    end
-
- # else 
+      end
+# else 
     else
       # error -- incorrect un or pw
-      session[:message] = {
+    session[:message] = {
         success: false,
         status: "bad",
         message: "Invalid username or password."
       }
-      redirect '/users/login'
+    redirect '/users/login'
     end
-
-  end
-
-
+end
+  
   # shows register 
   get '/register' do
     erb :register
@@ -53,14 +40,10 @@ class UserController < ApplicationController
 
   # do registration
   post '/register' do
-
     # check if user exists 
     user = User.find_by username: params[:username]
-       # User.find_by({ :username => params[:username] })
-
-  
+      
     if !user
-
       # create user 
       user = User.new
       user.username = params[:username]
@@ -75,58 +58,49 @@ class UserController < ApplicationController
         user.college_user == true
       end # setting user type based on input
 
-
       user.save
 
       session[:logged_in] = true
       session[:username] = user.username
       session[:user_id] = user.id
-      session[:message] = {
-        success: true,
-        status: "good",
-        message: "Welcome to the site, you are now logged in as #{user.username}."
-      }
 
-      if user.player_user == true
+ 
 
-          redirect '/players'
-          
-      else
+    if user.player_user == true
+        redirect '/players'
+    else user.college_user == true
          redirect '/colleges'
-      end
+    # else
+    #   session[:message] ={
+    #       success: false,
+    #       status: "bad",
+    #       message:"Please Select Player or College"
+    #     } 
+    end
 
-else 
+    else 
       # session message -- username taken
-      session[:message] = {
+    session[:message] = {
         success: false,
         status: "bad",
         message: "Sorry, username #{params[:username]} is already taken."
       }
-
-      # redirect to register so they can try again
+       # redirect to register so they can try again
       redirect '/users/register'
-      
-    end # if user does or does not exist exist
+      end # if user does or does not exist exist
+    end # post
 
-  end # post
-
-
- # logout
+    # logout
   get '/logout' do
-    
     username = session[:username] 
-
     session.destroy
-
-    session[:message] = {
+    
+   @message =  session[:message] = {
       success: true,
       status: "neutral",
       message: "User #{username} logged out."
     }
-
     redirect '/users/login'
-
   end
-
 end
 
