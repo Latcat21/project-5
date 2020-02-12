@@ -8,7 +8,6 @@ $soft-wheat: #dfd8c8;
   padding: 0;
   box-sizing: border-box;
 }
-
 .clearfix::after {
   content: "";
   display: table;
@@ -21,7 +20,7 @@ body{
 
 .navbar{
   background-color: black;
-  opacity: 0.8
+  opacity: .8;
 }
 
 .nav-logo{
@@ -44,6 +43,7 @@ body{
     height: 95vh;
     background-attachment: fixed;
     position: relative;
+    margin-top: -50px;
  }
 
 .home-section{

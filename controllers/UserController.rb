@@ -64,18 +64,11 @@ end
       session[:username] = user.username
       session[:user_id] = user.id
 
- 
-
     if user.player_user == true
         redirect '/players'
     else user.college_user == true
          redirect '/colleges'
-    # else
-    #   session[:message] ={
-    #       success: false,
-    #       status: "bad",
-    #       message:"Please Select Player or College"
-    #     } 
+  
     end
 
     else 
@@ -87,7 +80,7 @@ end
       }
        # redirect to register so they can try again
       redirect '/users/register'
-      end # if user does or does not exist exist
+      end # if user does or does not exist 
     end # post
 
     # logout

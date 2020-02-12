@@ -20,6 +20,7 @@ CREATE TABLE colleges(
   email VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 );
+
 CREATE TABLE players(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
