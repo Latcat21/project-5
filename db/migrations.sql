@@ -52,6 +52,10 @@ CREATE TABLE player_positions(
   position_id INTEGER REFERENCES positions(id) 
 );
 
+CREATE TABLE messagaes(
+  id SERIAL PRIMARY KEY,
+  content VARCHAR
+);
 
 
 
