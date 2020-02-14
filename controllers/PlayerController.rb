@@ -69,7 +69,23 @@ get '/college/:id' do
 
 end
 
+post '/college/:id/message' do
+  logged_in_user = User.find_by ({ :username => session[:username] })
 
+  new_message = Message.new
+  new_message.content = params[:content]
+  new_message.id = logged_in_user.id
+  new_message.save
+
+  session[:message] = {
+    success: true,
+    status: "Good",
+    message: "Your message has been sent"
+    }
+  
+  
+  redirect "/players/account"
+end
 
 
 get '/:id/edit' do
