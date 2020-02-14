@@ -2,22 +2,17 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="<%= url("/stylesheets/main.css")%>">
 </head>
-
-<body>
-
-<header>
-
-<nav class="navbar navbar-expand-lg fixed-top">
- <div class="container">
-    <a class="navbar-brand" href="/">
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">
            <img class="nav-logo img-fluid"src="/images/nav-logo.png" alt=""> 
         </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon "></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -36,12 +31,10 @@
    </div>
   </div>
 </nav>
-
-  </header>
+</header>
   <div class="session-message">
-
-<% if session[:message] %>
-    <p class="message <%= session[:message][:status] %>"><%= session[:message][:message] %></p>
+    <% if session[:message] %>
+    <h5 class="message <%= session[:message][:status] %> text-center m-3"><%= session[:message][:message] %></h5>
   <% 
     end
     session[:message] = nil 

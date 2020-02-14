@@ -46,6 +46,9 @@ get '/account' do
   @player = Player.find_by({:user_id => session[:user_id]})
   @positions = @player.positions
   @user_id = user.id
+
+  @messages  = user.messages
+
   erb :player_home
 
 end
@@ -82,9 +85,8 @@ post '/college/:id/message' do
     status: "Good",
     message: "Your message has been sent"
     }
-  
-  
-  redirect "/players/account"
+    
+    redirect "/players/account"
 end
 
 

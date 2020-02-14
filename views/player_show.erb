@@ -15,5 +15,16 @@
     <li class="list-group-item">stats: <%= @player.stats%></li>
   </ul>
 </div>
+<div class="container">
+ <h2 class="p-3">Send them a message</h2>
+       <form  action="/colleges/player/<%=@player.id%>/message" method="POST">
+        <div class="form-group">
+          
+            <textarea class="form-control" name="content" rows=5></textarea>
+          </div>
+            <button class="btn btn-primary m-3" >Submit</button>
+        </form>
+      </div>
+</div>
 </div>
 </body>

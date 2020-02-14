@@ -54,7 +54,9 @@ CREATE TABLE player_positions(
 
 CREATE TABLE messages(
   id SERIAL PRIMARY KEY,
-  content VARCHAR
+  content VARCHAR,
+  user_id INTEGER REFERENCES users(id),
+  from_id INTEGER REFERENCES user(id)
 );
 
 
