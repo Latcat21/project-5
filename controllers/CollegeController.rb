@@ -48,7 +48,7 @@ class CollegeController < ApplicationController
   get '/account' do
     @college = College.find_by({ :user_id => session[:user_id]})
     @positions = @college.positions
-    erb :college_show
+    erb :college_home
   end
   
   get '/matching-players' do
@@ -64,6 +64,16 @@ class CollegeController < ApplicationController
    @available_players = @available_players.uniq()
     erb :player_match
    end
+
+   get '/player/:id' do
+    @player= Player.find params[:id]
+    erb :player_show
+  
+  end
+  
+
+
+
   
    get '/:id/edit' do
     @positions = Position.all
@@ -96,4 +106,11 @@ class CollegeController < ApplicationController
     end
   redirect "/colleges/account"
   end
+
+
+
+
+
+
+
 end

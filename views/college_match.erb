@@ -1,25 +1,23 @@
 <body>
+  <div class="college-match">
+    <div class="back-btn">
+      <a href="/players/account" class="btn btn-secondary">Back to your account</a>
+      <div>
+        <% @open_positions.each do |college| %>
+          <div class="college-card">
+          <h4 class="college-card__heading text-center mt-5">
+            <%=college.school_name %>
+          </h4>
+            <div class="college-card__details">
+              <%# <ul>
+               
+               </ul> %>
+                <a class="btn btn-primary btn-block mt-4" href='college/ <%=college.id%>'>View</a>
 
-<div class="college-match">
-<div class="back-btn">
-<a href="/players/account" class="btn btn-secondary">Back to your account</a>
-<div>
-  <% @open_positions.each do |college| %>
-  <div class="college-card">
-    <h4 class="college-card__heading text-center mt-5">
-      <%=college.school_name %>
-    </h4>
-<div class="college-card__details">
-  <ul>
-    <li>State: <%= college.state%></li>
-    <li>City: <%= college.city%></li>
-    <li>Recruiter: <%= college.name%></li>
-  </ul>
-    <a class="btn btn-primary btn-block mt-4" href="mailto:<%=college.email %>" target="_blank">Email</a>
-</div>
+        <%# <a class="btn btn-primary btn-block mt-4" href="mailto:" target="_blank">Email</a> %>
+    </div>
 </div>
 <% end %>
-
 </div>
 </body>
 

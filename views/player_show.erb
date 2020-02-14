@@ -1,119 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<body class="py-5">
+<div class="container">
 
-<body>
-  <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
-    <h1 class="py-5 mt-5 text-center">
-      Welcome to your account</h1>
-<section id="posts">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="card">
-         <table class="table table-striped">
-             <tbody>
-              <tr>
-                <td>Player Name</td>
-              <td><%= @player.name %> </td>
-            <td>
-            <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-          <i class="fas fa-angle-double-right"></i> Edit
-            </a>
-            </td>
-            </tr>
-              <tr>
-                <td>School Name</td>
-                  <td> <%= @player.school_name %></td>
-                    <td>
-                      <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                        <i class="fas fa-angle-double-right"></i> Edit
-                        </a>
-                  </td>
-              </tr>
-              <tr>
-              <td>State</td>
-                <td><%= @player.state %></td>
-                  <td>
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Edit
-                    </a>
-                  </td>
-              </tr>
-              <tr>
-              <td>City</td>
-                <td><%= @player.city %></td>
-                  <td>
-                  <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                    <i class="fas fa-angle-double-right"></i> Edit
-                  </a>
-                  </td>
-              </tr>
-              <tr>
-                <td>Weight</td>
-                  <td><%= @player.weight %>'lbs</td>
-                  <td>
-                    <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right "></i> Edit
-                    </a>
-                  </td>
-              </tr>
-              <tr>
-                  <td>Height</td>
-                  <td><%=@player.height%>'in</td>
-                  <td>
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right "></i> Edit
-                    </a>
-                  </td>
-              </tr>
-              <tr>
-                  <td>Email</td>
-                  <td><%=@player.email%></td>
-                  <td>
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right "></i> Edit
-                    </a>
-                  </td>
-              </tr>
-              </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center bg-light mb-3">
-          <div class="card-body">
-              <h4 class="pb-2">Posistions I Play</h4>
-              <i class="fas fa-baseball"></i></i> 
-                <% @positions.each do |position| %>
-                      <h5>  <%= position.name%> </h5>
-                    <% end %>
-                
-                </ul>
-            <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
-              <i class="fas fa-angle-double-right "></i> Edit
-            </a>
-            </div>
-        </div>
-  <div class="card text-center bg-light  mb-3">
-          <div class="card-body">
-            <h4 class="pb-2" >My Stats</h4>
-            <i class="fas fa-baseball-ball pb-3"></i>
-            <h5> <%= @player.stats %> </h5>
-           
-            <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
-              <i class="fas fa-angle-double-right "></i> Edit
-            </a>
-          </div>
-        </div>
-
-        
-      </div>
-    </div>
+<h1 class="text-center">College show page</h1>
+<div class="college-show-card bg-light text-center m-4">
+<div class="card" >
+  <div class="card-header">
+  <h2> player name:  <%=@player.name%> </h2>
   </div>
-  <a href="/players/matching-colleges" class="btn btn-secondary btn-block mt-3">
-    <i class="fas fa-plus "></i> Find Colleges That Need You
-  </a>
-</section>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">State: <%=@player.state%></li>
+    <li class="list-group-item">City : <%=@player.city%></li>
+    <li class="list-group-item">Height: <%= @player.height%></li>
+    <li class="list-group-item">weight: <%= @player.weight%></li>
+    <li class="list-group-item">stats: <%= @player.stats%></li>
+  </ul>
+</div>
 </div>
 </body>
-</html>
