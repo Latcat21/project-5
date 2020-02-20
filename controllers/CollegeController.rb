@@ -73,10 +73,12 @@ class CollegeController < ApplicationController
 
   post '/player/:id/message' do
     logged_in_user = User.find_by ({ :username => session[:username] })
+
   
     new_message = Message.new
     new_message.content = params[:content]
-    new_message.id = logged_in_user.id
+    new_message_user_id = params[:id]
+    new_message.from_id = logged_in_user.id
     new_message.save
   
     session[:message] = {

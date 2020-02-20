@@ -56,7 +56,7 @@ CREATE TABLE messages(
   id SERIAL PRIMARY KEY,
   content VARCHAR,
   user_id INTEGER REFERENCES users(id),
-  from_id INTEGER REFERENCES user(id)
+  from_id INTEGER REFERENCES users(id)
 );
 
 

@@ -47,10 +47,11 @@ get '/account' do
   @positions = @player.positions
   @user_id = user.id
 
-  @messages  = user.messages
+ @messages = Message.where :user_id => params[:id]
+ 
 
   erb :player_home
-
+ 
 end
 
 get '/matching-colleges' do
@@ -77,7 +78,8 @@ post '/college/:id/message' do
 
   new_message = Message.new
   new_message.content = params[:content]
-  new_message.id = logged_in_user.id
+  new_message.from_id = logged_in_user.id
+  new_message.user_id = params[:id]
   new_message.save
 
   session[:message] = {
