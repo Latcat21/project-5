@@ -73,6 +73,23 @@
              </div> 
           </div> 
       </div> 
+      
+      <div class="col-md-4">
+     <div class="card text-center bg-light  mb-3">
+          <div class="card-body">
+            <h4 class="pb-2" >My messages</h4>
+            <i class="fas fa-envelope pb-3"></i>
+          <% @messages.each do |message| %>
+                  <p>Title: <%= message.title%> </p>
+                  <p>Content:<%= message.content%> </p>
+            <% end %>
+                 
+            </div>
+          </div>
+        </div>
+      
+
+
   <a href="/colleges/matching-players" class="btn btn-secondary btn-block mt-3">
     <i class="fas fa-plus "></i> Find Players That Need you</a>
   </section>

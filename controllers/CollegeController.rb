@@ -46,8 +46,12 @@ class CollegeController < ApplicationController
   end
   
   get '/account' do
+    user = User.find_by({:id => session[:user_id]})
     @college = College.find_by({ :user_id => session[:user_id]})
     @positions = @college.positions
+    
+    @messages = user.messages
+   
     erb :college_home
   end
   
@@ -73,11 +77,12 @@ class CollegeController < ApplicationController
 
   post '/player/:id/message' do
     logged_in_user = User.find_by ({ :username => session[:username] })
+    player = Player.find params[:id]
 
-  
     new_message = Message.new
     new_message.content = params[:content]
-    new_message_user_id = params[:id]
+    new_message.title = params[:title]
+    new_message.user_id = player.user.id
     new_message.from_id = logged_in_user.id
     new_message.save
   

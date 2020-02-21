@@ -17,7 +17,9 @@
  <h2 class="p-3">Send them a message</h2>
        <form  action="/players/college/<%=@college.id%>/message" method="POST">
         <div class="form-group">
-          
+            <input type="text" name="title" class="form-control">
+            </div>
+            <div class="form-group">
             <textarea class="form-control" name="content" rows=5></textarea>
           </div>
             <button class="btn btn-primary m-3" >Submit</button>

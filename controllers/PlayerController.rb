@@ -45,11 +45,11 @@ get '/account' do
   user = User.find_by({:id => session[:user_id]})
   @player = Player.find_by({:user_id => session[:user_id]})
   @positions = @player.positions
-  @user_id = user.id
-
- @messages = Message.where :user_id => params[:id]
  
+  @messages = user.messages
 
+
+   
   erb :player_home
  
 end
@@ -75,10 +75,12 @@ end
 
 post '/college/:id/message' do
   logged_in_user = User.find_by ({ :username => session[:username] })
-
+   
+  college = College.find params[:id]
   new_message = Message.new
   new_message.content = params[:content]
-  new_message.from_id = logged_in_user.id
+  new_message.title = params[:title]
+  new_message.from_id = college.user.id
   new_message.user_id = params[:id]
   new_message.save
 
