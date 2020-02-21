@@ -1,2 +1,10 @@
 <h2><%=@message.title%></h2>
 <h3><%=@message.content%></h3>
+ <h2 class="p-3">Reply</h2>
+       <form  action="/colleges/account/<%=@message.id%>/reply" method="POST">
+        <div class="form-group">
+          <textarea class="form-control" name="content" rows=5></textarea>
+          </div>
+            <button class="btn btn-primary m-3" >Submit</button>
+        </form>
+      </div>

@@ -56,6 +56,23 @@ get '/account/:id' do
   erb :player_message
 end
 
+post '/account/:id/reply' do
+  logged_in_user = User.find_by ({ :username => session[:username] })
+  message = Message.find params[:id]
+  reply = Reply.new
+  reply.content = params[:content]
+  reply.message_id = message.id
+  reply.user_id = logged_in_user.id
+  reply.save
+
+  session[:message] = {
+    success: true,
+    status: "Good",
+    message: "Your replay has been sent"
+    }
+    redirect "/players/account"
+end
+
 get '/matching-colleges' do
   @player = Player.find_by({:user_id => session[:user_id]})
   #finds this players positions
