@@ -1,5 +1,10 @@
 <h2><%=@message.title%></h2>
 <h3><%=@message.content%></h3>
+
+<% @replies.each do |reply| %>
+<h4><%=reply.content%></h4>
+
+<% end %>
  <h2 class="p-3">Reply</h2>
        <form  action="/colleges/account/<%=@message.id%>/reply" method="POST">
         <div class="form-group">

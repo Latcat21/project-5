@@ -55,6 +55,8 @@ class CollegeController < ApplicationController
   user = User.find_by({:id => session[:user_id]})
   @message = Message.find params[:id]
 
+  @replies = @message.replies
+
   erb :college_message
   end
 
