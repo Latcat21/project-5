@@ -60,5 +60,11 @@ CREATE TABLE messages(
   from_id INTEGER REFERENCES users(id)
 );
 
+CREATE TABLE replies(
+  id SERIAL PRIMARY KEY,
+  content VARCHAR,
+  message_id INTEGER REFERENCES messages(id),
+  user_id INTEGER REFERENCES users(id)
+)
 
 
