@@ -112,7 +112,7 @@
           <% @messages.each do |message| %>
                   <p>Title: <%= message.title%> </p>
                   <p>Content:<%= message.content%> </p>
-                  
+                  <a href="/players/account/<%=message.id %>">View</a>
                 <% end %>
                  
             

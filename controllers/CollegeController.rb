@@ -1,16 +1,12 @@
 class CollegeController < ApplicationController
 
   before do
-    puts "before filter is running"
-
     if !session[:logged_in]
-      # message
       session[:message] = {
         success: false,
         status: "neutral",
         message: "You must be logged in to do that."
       }
-      #redirect
       redirect '/users'
     end
   end
@@ -54,14 +50,20 @@ class CollegeController < ApplicationController
    
     erb :college_home
   end
-  
+
+  get '/account/:id' do
+  user = User.find_by({:id => session[:user_id]})
+  @message = Message.find params[:id]
+
+  erb :college_message
+  end
+
   get '/matching-players' do
     @college = College.find_by({ :user_id => session[:user_id]})
     #find the college positions
     @positions = @college.positions
     #looping over players position with flat map to get a single array instead of an array of arrays
     @available_players = @positions.flat_map do |position|
-      
       position.players
    end
    #this make it so there are no duplicates
@@ -72,7 +74,6 @@ class CollegeController < ApplicationController
    get '/player/:id' do
     @player= Player.find params[:id]
     erb :player_show
-  
   end
 
   post '/player/:id/message' do
@@ -91,7 +92,6 @@ class CollegeController < ApplicationController
       status: "Good",
       message: "Your message has been sent"
       }
-      
       redirect "/colleges/account"
   end
   
@@ -126,11 +126,4 @@ class CollegeController < ApplicationController
     end
   redirect "/colleges/account"
   end
-
-
-
-
-
-
-
 end

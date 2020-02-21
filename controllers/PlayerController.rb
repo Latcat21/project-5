@@ -45,13 +45,15 @@ get '/account' do
   user = User.find_by({:id => session[:user_id]})
   @player = Player.find_by({:user_id => session[:user_id]})
   @positions = @player.positions
- 
   @messages = user.messages
-
-
-   
   erb :player_home
- 
+end
+
+get '/account/:id' do
+  user = User.find_by({:id => session[:user_id]})
+  @message = Message.find params[:id]
+
+  erb :player_message
 end
 
 get '/matching-colleges' do
