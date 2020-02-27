@@ -59,6 +59,29 @@ class CollegeController < ApplicationController
   erb :college_message
   end
 
+  delete '/account/:id' do
+    user = User.find_by({:id => session[:user_id]})
+    message = Message.find params[:id]
+    replies = message.replies
+
+    replies.each  do |relation|
+      relation.destroy
+    end
+
+    message_id = message.id
+
+    message.destroy
+    
+    session[:message] = {
+      success: true,
+      status: "Good",
+      message: "Message #{message_id} has been deleted"
+      }
+
+    redirect '/colleges/account'
+
+  end
+
   post '/account/:id/reply' do
     logged_in_user = User.find_by ({ :username => session[:username] })
     message = Message.find params[:id]
@@ -71,7 +94,7 @@ class CollegeController < ApplicationController
     session[:message] = {
       success: true,
       status: "Good",
-      message: "Your replay has been sent"
+      message: "Your reply has been sent"
       }
       redirect "/colleges/account"
 
