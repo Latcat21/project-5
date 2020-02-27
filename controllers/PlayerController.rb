@@ -43,13 +43,7 @@ get '/account' do
   @positions = @player.positions
 
   @messages = user.messages
-
-  user2 = @messages.from_id
-  @my_messages = user_2.messages
-
   # no implicit conversion of Symbol into Integer is the error
-
-
   erb :player_home
 end
 
@@ -60,6 +54,29 @@ get '/account/:id' do
 
   @replies = user.replies
   erb :player_message
+end
+
+delete '/account/:id' do
+  user = User.find_by({:id => session[:user_id]})
+  message = Message.find params[:id]
+  replies = message.replies
+
+  replies.each  do |relation|
+    relation.destroy
+  end
+
+  message_id = message.id
+
+  message.destroy
+  
+  session[:message] = {
+    success: true,
+    status: "Good",
+    message: "Message #{message_id} has been deleted"
+    }
+
+  redirect '/players/account'
+
 end
 
 post '/account/:id/reply' do

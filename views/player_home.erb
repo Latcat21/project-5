@@ -122,11 +122,7 @@
           <div class="card-body">
             <h4 class="pb-2" >Sent messages</h4>
             <i class="fas fa-envelope pb-3"></i>
-           <% @my_messages.each do |message| %>
-                  <p>Title: <%= message.title%> </p>
-                  <p>Content:<%= message.content%> </p>
-                  <a href="/players/account/<%=message.id %>">View</a>
-                <% end %>
+         
                  
                  
             
