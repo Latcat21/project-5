@@ -1,5 +1,7 @@
+<div class="container">
 <h2><%=@message.title%></h2>
-<h3><%=@message.content%></h3>
+<p><%=@message.content%></p>
+<h4>from: <%=@message.user.id%>
 
 <% @replies.each do |reply| %>
 <h4><%=reply.content%></h4>
@@ -12,4 +14,5 @@
           </div>
             <button class="btn btn-primary m-3" >Submit</button>
         </form>
+      </div>
       </div>

@@ -24,7 +24,6 @@ class CollegeController < ApplicationController
     new_college.school_name = params[:school_name]
     new_college.state = params[:state]
     new_college.city = params[:city]
-    new_college.email = params[:email]
     new_college.user_id =  session[:user_id]
     new_college.save
 
@@ -127,7 +126,6 @@ class CollegeController < ApplicationController
     @college.school_name = params[:school_name]
     @college.state = params[:state]
     @college.city = params[:city]
-    @college.email = params[:email]
     @college.save
     
     found_positions = @college.college_needs

@@ -1,5 +1,13 @@
-<h2><%=@message.title%></h2>
-<h3><%=@message.content%></h3>
+<div class="containr">
+
+<h2>title: <%=@message.title%></h2>
+<p><%=@message.content%></p>
+<p>from: <%=@message.user.id%></p>
+
+<% @replies.each do |reply| %>
+<h4><%=reply.content%></h4>
+
+<% end %>
 
  <h2 class="p-3">Reply</h2>
        <form  action="/players/account/<%=@message.id%>/reply" method="POST">
@@ -8,4 +16,5 @@
           </div>
             <button class="btn btn-primary m-3" >Submit</button>
         </form>
+      </div>
       </div>

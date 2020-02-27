@@ -17,7 +17,6 @@ CREATE TABLE colleges(
   school_name VARCHAR(255),
   state VARCHAR(255), 
   city VARCHAR(255), 
-  email VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 );
 
@@ -27,10 +26,6 @@ CREATE TABLE players(
   school_name VARCHAR(255),
   state VARCHAR(255), 
   city VARCHAR(255), 
-  height NUMERIC NOT NULL DEFAULT 'NaN',
-  weight NUMERIC NOT NULL DEFAULT 'NaN',
-  stats VARCHAR(255),
-  email VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 );
 

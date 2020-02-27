@@ -23,10 +23,6 @@ post '/account' do
   new_player.school_name = params[:school_name]
   new_player.state = params[:state]
   new_player.city = params[:city]
-  new_player.height = params[:height]
-  new_player.weight = params[:weight]
-  new_player.stats = params[:stats]
-  new_player.email = params[:email]
   new_player.user_id = session[:user_id]
   new_player.save
  # this is an array of id's
@@ -45,14 +41,24 @@ get '/account' do
   user = User.find_by({:id => session[:user_id]})
   @player = Player.find_by({:user_id => session[:user_id]})
   @positions = @player.positions
+
   @messages = user.messages
+
+  user2 = @messages.from_id
+  @my_messages = user_2.messages
+
+  # no implicit conversion of Symbol into Integer is the error
+
+
   erb :player_home
 end
 
 get '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
   @message = Message.find params[:id]
+  message = Message.all
 
+  @replies = user.replies
   erb :player_message
 end
 
@@ -99,8 +105,8 @@ post '/college/:id/message' do
   new_message = Message.new
   new_message.content = params[:content]
   new_message.title = params[:title]
-  new_message.from_id = college.user.id
-  new_message.user_id = params[:id]
+  new_message.from_id = logged_in_user.id
+  new_message.user_id = college.user.id
   new_message.save
 
   session[:message] = {
@@ -125,9 +131,6 @@ put '/account/:id' do
   updated_player.school_name = params[:school_name]
   updated_player.state = params[:state]
   updated_player.city = params[:city]
-  updated_player.height = params[:height]
-  updated_player.weight = params[:weight]
-  updated_player.stats = params[:stats]
   updated_player.save
   # delete all player_positions associated with this player 
   @player = Player.find_by({:user_id => session[:user_id]})
