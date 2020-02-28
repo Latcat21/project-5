@@ -14,6 +14,7 @@ class CollegeController < ApplicationController
   get '/' do
     # get positions from postions table
     @positions = Position.all
+    @states = State.all
     erb :college_reg
   end
   
@@ -22,9 +23,9 @@ class CollegeController < ApplicationController
     new_college = College.new
     new_college.name = params[:name]
     new_college.school_name = params[:school_name]
-    new_college.state = params[:state]
+    new_college.state_code = params[:state]
     new_college.city = params[:city]
-    new_college.user_id =  session[:user_id]
+    new_college.user_id = session[:user_id]
     new_college.save
 
     # this is an array of id's
@@ -44,7 +45,6 @@ class CollegeController < ApplicationController
     user = User.find_by({:id => session[:user_id]})
     @college = College.find_by({ :user_id => session[:user_id]})
     @positions = @college.positions
-    
     @messages = user.messages
    
     erb :college_home

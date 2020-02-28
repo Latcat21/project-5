@@ -31,9 +31,7 @@
                   </td>
               </tr>
               <tr>
-              <td>State</td>
-                <td><%= @player.state %></td>
-                  <td>
+           
                     <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
                       <i class="fas fa-angle-double-right"></i> Edit
                     </a>
@@ -50,17 +48,14 @@
               </tr>
               <tr>
                 <td>Weight</td>
-                  <td><%= @player.weight %>'lbs</td>
-                  <td>
+                
                     <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
                       <i class="fas fa-angle-double-right "></i> Edit
                     </a>
                   </td>
               </tr>
               <tr>
-                  <td>Height</td>
-                  <td><%=@player.height%>'in</td>
-                  <td>
+                
                     <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
                       <i class="fas fa-angle-double-right "></i> Edit
                     </a>
@@ -68,7 +63,7 @@
               </tr>
               <tr>
                   <td>Email</td>
-                  <td><%=@player.email%></td>
+                
                   <td>
                     <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
                       <i class="fas fa-angle-double-right "></i> Edit
@@ -96,9 +91,9 @@
         </div>
   <div class="card text-center bg-light  mb-3">
           <div class="card-body">
-            <h4 class="pb-2" >My Stats</h4>
+           
             <i class="fas fa-baseball-ball pb-3"></i>
-            <h5> <%= @player.stats %> </h5>
+           
            
             <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
               <i class="fas fa-angle-double-right "></i> Edit

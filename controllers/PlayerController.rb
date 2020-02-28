@@ -12,16 +12,18 @@ class PlayerController < ApplicationController
     end
   end
   
-  get '/' do
+get '/' do
   @positions = Position.all
+  @states = State.all
   erb :player_reg
 
 end
+
 post '/account' do
   new_player= Player.new
   new_player.name = params[:name]
   new_player.school_name = params[:school_name]
-  new_player.state = params[:state]
+  new_player.state_code = params[:state]
   new_player.city = params[:city]
   new_player.user_id = session[:user_id]
   new_player.save
@@ -111,6 +113,25 @@ end
 
 get '/college/:id' do
   @college = College.find params[:id]
+  city_name = @college.city
+  found_state = State.find_by({:id  => @college.state_code})
+
+  puts 'the found state is'
+  state = found_state[:code]
+
+  def address(city_name, state)
+    arr_city = city_name.split(' ')
+    if arr_city.length > 1
+      arr_city = arr_city.join('+')
+      return arr_city + ',' + state
+    elsif arr_city.length == 1  
+      return  arr_city[0] + ',' + state
+    end
+  end	
+  @modified = address(city_name, state)
+  @other_user = @college.name
+
+
   erb :college_show
 
 end

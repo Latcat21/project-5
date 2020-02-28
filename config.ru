@@ -12,6 +12,7 @@ require './models/CollegeNeed'
 require './models/PlayerPosition'
 require './models/Message'
 require './models/Reply'
+require './models/State'
 
 require 'sass/plugin/rack'
 

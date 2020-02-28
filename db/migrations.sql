@@ -11,11 +11,17 @@ CREATE TABLE users(
   college_user BOOLEAN
 );
 
+CREATE TABLE states(
+	id SERIAL PRIMARY KEY,
+	code VARCHAR(32) NOT NULL,
+	name VARCHAR(120) NOT NULL
+);
+
 CREATE TABLE colleges(
   id SERIAL PRIMARY KEY,
   name VARCHAR(32),
   school_name VARCHAR(255),
-  state VARCHAR(255), 
+  state_code INTEGER REFERENCES states(id),
   city VARCHAR(255), 
   user_id INTEGER REFERENCES users(id)
 );
@@ -24,8 +30,8 @@ CREATE TABLE players(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   school_name VARCHAR(255),
-  state VARCHAR(255), 
   city VARCHAR(255), 
+  state_code INTEGER REFERENCES states(id),
   user_id INTEGER REFERENCES users(id)
 );
 
