@@ -67,5 +67,3 @@ CREATE TABLE replies(
   message_id INTEGER REFERENCES messages(id),
   user_id INTEGER REFERENCES users(id)
 );
-
-

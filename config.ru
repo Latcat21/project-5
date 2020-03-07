@@ -31,7 +31,3 @@ map ('/colleges') {
 map ('/players') {
   run PlayerController
 }
-
-
-
-
