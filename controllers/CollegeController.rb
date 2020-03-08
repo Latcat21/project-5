@@ -115,6 +115,27 @@ class CollegeController < ApplicationController
 
    get '/player/:id' do
     @player= Player.find params[:id]
+
+    school = @player.school_name
+
+    uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,rating,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
+			it = Net::HTTP.get(uri)
+			parsed_it = JSON.parse it 
+      @places = parsed_it["results"]
+      @img = @places.first['rating']
+      puts "---------------"
+      puts @places
+      puts'^^^^^^^^^^^place^^^^^^^^^^^^^^^^^^'
+
+      puts "---------------"
+      puts @places.first["name"]
+      puts @places.first['formatted_address']
+      puts @img
+      puts "^^^^^^^^^^img^^^^^^^^^^^^^^^"
+   
+
+
+
     erb :player_show
   end
 
