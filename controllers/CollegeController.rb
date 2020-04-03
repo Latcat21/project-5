@@ -132,8 +132,16 @@ class CollegeController < ApplicationController
       puts @places.first['formatted_address']
       puts @img
       puts "^^^^^^^^^^img^^^^^^^^^^^^^^^"
-   
+    
 
+      nlp = URI('https://latcat21.github.io/college-highschool-JSON/colleges.JSON');
+      new_it = Net::HTTP.get(nlp)
+      new_parsed = JSON.parse new_it
+      @schools = new_parsed
+
+      puts "schools --------"
+      puts @schools
+      puts "^^^^^^^^schools^^^^^^^^"
 
 
     erb :player_show

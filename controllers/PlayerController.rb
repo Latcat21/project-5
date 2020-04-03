@@ -133,7 +133,7 @@ get '/college/:id' do
 
   school = @college.school_name
 
-  uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,rating,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
+  uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,rating,photos,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
     @places = parsed_it["results"]
@@ -147,6 +147,9 @@ get '/college/:id' do
     puts @places.first['formatted_address']
     puts @img
     puts "^^^^^^^^^^img^^^^^^^^^^^^^^^"
+
+
+   
 
 
   erb :college_show
