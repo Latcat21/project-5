@@ -3,9 +3,11 @@
 <p><%=@message.content%></p>
 <h4>from: <%=@message.user.id%>
 
+<% if @replies %>
 <% @replies.each do |reply| %>
 <h4><%=reply.content%></h4>
 
+<% end %>
 <% end %>
 <form action="/colleges/account/<%=@message.id%>" method="POST" >
             <input type="hidden" name="_method" value="DELETE">

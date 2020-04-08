@@ -45,7 +45,7 @@ get '/account' do
   @positions = @player.positions
 
   @messages = user.messages
-  # no implicit conversion of Symbol into Integer is the error
+  
   erb :player_home
 end
 

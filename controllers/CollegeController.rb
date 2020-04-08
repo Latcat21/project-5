@@ -46,14 +46,20 @@ class CollegeController < ApplicationController
     @college = College.find_by({ :user_id => session[:user_id]})
     @positions = @college.positions
     @messages = user.messages
+
    
+    @sent_messages = Message.where("from_id = ?", session[:user_id])
+    puts "-----sent messages----------"
+      puts @sent_messages
+  
+    puts "^^^^^^^^sent messages^^^^^^^^^^^^^^"
+    
     erb :college_home
   end
 
   get '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
   @message = Message.find params[:id]
-
   @replies = @message.replies
 
   erb :college_message
