@@ -74,6 +74,7 @@
           </table>
         </div>
       </div>
+      </div>
       <div class="col-md-3">
         <div class="card text-center bg-light mb-3">
           <div class="card-body">
@@ -88,6 +89,7 @@
               <i class="fas fa-angle-double-right "></i> Edit
             </a>
             </div>
+        </div>
         </div>
   <div class="card text-center bg-light  mb-3">
           <div class="card-body">
@@ -113,22 +115,26 @@
             
           </div>
         </div>
-          <div class="card text-center bg-light  mb-3">
+            <div class="col-md-4">
+     <div class="card text-center bg-light  mb-3">
           <div class="card-body">
             <h4 class="pb-2" >Sent messages</h4>
             <i class="fas fa-envelope pb-3"></i>
-         
+          <% @sent_messages.each do |message| %>
+                  <p>Title: <%= message.title%> </p>
+                  <p>Content:<%= message.content%> </p>
+                <a href="/colleges/account/<%=message.id %>">View</a>
+            <% end %>
                  
-                 
-            
+            </div>
           </div>
         </div>
-        </div>
-    </div>
-  </div>
+          
+  
   <a href="/players/matching-colleges" class="btn btn-secondary btn-block mt-3">
     <i class="fas fa-plus "></i> Find Colleges That Need You
   </a>
+  </div>
 </section>
 </div>
 </body>

@@ -45,6 +45,7 @@ get '/account' do
   @positions = @player.positions
 
   @messages = user.messages
+  @sent_messages = Message.where("from_id = ?", session[:user_id])
   
   erb :player_home
 end
