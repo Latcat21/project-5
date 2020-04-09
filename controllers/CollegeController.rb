@@ -128,10 +128,6 @@ class CollegeController < ApplicationController
     @modified = address(city_name, state)
     @other_user = @player.name
   
-
-  
-
-
     school = @player.school_name
 
     uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,rating,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")

@@ -117,37 +117,23 @@ get '/college/:id' do
   city_name = @college.city
   found_state = State.find_by({:id  => @college.state_code})
 
-  puts 'the found state is'
+
   state = found_state[:code]
 
-  def address(city_name, state)
-    arr_city = city_name.split(' ')
-    if arr_city.length > 1
-      arr_city = arr_city.join('+')
-      return arr_city + ',' + state
-    elsif arr_city.length == 1  
-      return  arr_city[0] + ',' + state
-    end
-  end	
+ 
   @modified = address(city_name, state)
   @other_user = @college.name
 
   school = @college.school_name
 
-  uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,rating,photos,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
+  uri = URI("https://latcat21.github.io/college-highschool-JSON/colleges.JSON")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
-    @places = parsed_it["results"]
-    @img = @places.first['rating']
-    puts "---------------"
-    puts @places
-    puts'^^^^^^^^^^^place^^^^^^^^^^^^^^^^^^'
+    @places = parsed_it[0]["results"]
 
-    puts "---------------"
-    puts @places.first["name"]
-    puts @places.first['formatted_address']
-    puts @img
-    puts "^^^^^^^^^^img^^^^^^^^^^^^^^^"
+    puts @places
+    puts "-----^-----api-------"
+    
 
 
    
@@ -212,3 +198,14 @@ put '/account/:id' do
     redirect "/players/account"
   end
 end
+
+#modifying address for google maps
+def address(city_name, state)
+  arr_city = city_name.split(' ')
+  if arr_city.length > 1
+    arr_city = arr_city.join('+')
+    return arr_city + ',' + state
+  elsif arr_city.length == 1  
+    return  arr_city[0] + ',' + state
+  end
+end	
