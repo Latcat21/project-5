@@ -129,7 +129,7 @@ get '/college/:id' do
   uri = URI("https://latcat21.github.io/college-highschool-JSON/colleges.JSON")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
-    @places = parsed_it[0]["results"]
+    @places = parsed_it
 
     puts @places
     puts "-----^-----api-------"

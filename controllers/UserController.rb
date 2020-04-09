@@ -52,13 +52,16 @@ end
 
       if user_type == 'player'
         user.player_user = true
+        session[:user_type] = 'player'
         
       else 
         user_type == 'college'
         user.college_user == true
+        session[:user_type] = 'college'
       end # setting user type based on input
 
       user.save
+
 
       session[:logged_in] = true
       session[:username] = user.username
