@@ -121,6 +121,16 @@ class CollegeController < ApplicationController
 
    get '/player/:id' do
     @player= Player.find params[:id]
+    city_name = @player.city
+    found_state = State.find_by({:id => @player.state_code})
+    state = found_state[:code]
+
+    @modified = address(city_name, state)
+    @other_user = @player.name
+  
+
+  
+
 
     school = @player.school_name
 
@@ -128,29 +138,10 @@ class CollegeController < ApplicationController
 			it = Net::HTTP.get(uri)
 			parsed_it = JSON.parse it 
       @places = parsed_it["results"]
-      @img = @places.first['rating']
-      puts "---------------"
-      puts @places
-      puts'^^^^^^^^^^^place^^^^^^^^^^^^^^^^^^'
+      @location =  @places.first['formatted_address']
 
-      puts "---------------"
-      puts @places.first["name"]
-      puts @places.first['formatted_address']
-      puts @img
-      puts "^^^^^^^^^^img^^^^^^^^^^^^^^^"
     
-
-      nlp = URI('https://latcat21.github.io/college-highschool-JSON/colleges.JSON');
-      new_it = Net::HTTP.get(nlp)
-      new_parsed = JSON.parse new_it
-      @schools = new_parsed
-
-      puts "schools --------"
-      puts @schools
-      puts "^^^^^^^^schools^^^^^^^^"
-
-
-    erb :player_show
+  erb :player_show
   end
 
   post '/player/:id/message' do
@@ -203,3 +194,15 @@ class CollegeController < ApplicationController
   redirect "/colleges/account"
   end
 end
+
+#modifiying address for google maps
+
+def address(city_name, state)
+  arr_city = city_name.split(' ')
+  if arr_city.length > 1
+    arr_city = arr_city.join('+')
+    return arr_city + ',' + state
+  elsif arr_city.length == 1  
+    return  arr_city[0] + ',' + state
+  end
+end	
