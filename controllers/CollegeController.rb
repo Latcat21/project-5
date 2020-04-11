@@ -160,7 +160,10 @@ class CollegeController < ApplicationController
       redirect "/colleges/account"
   end
 
-  post 'player/:id/follow' do
+  post '/player/:id/follow' do
+
+    "hello world"
+    
     logged_in_user = User.find_by({:username => session[:username]})
     player = Player.find params[:id]
 
@@ -169,6 +172,7 @@ class CollegeController < ApplicationController
     new_follow.college_id = logged_in_user.id
 
     new_follow.save
+    
 
     session[:message] = {
       success: true,
@@ -177,7 +181,7 @@ class CollegeController < ApplicationController
       }
 
       redirect "colleges/account"
-
+      
   end
   
   get '/:id/edit' do
