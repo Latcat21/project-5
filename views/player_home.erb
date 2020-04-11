@@ -5,6 +5,12 @@
   <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
     <h1 class="py-5 mt-5 text-center">
       Welcome to your account</h1>
+      <% if session[:message] %>
+<h5 class="text-secondary <%= session[:message][:status] %>"><%= session[:message][:message] %></h5>
+  <% 
+    end
+    session[:message] = nil 
+%>
 <section id="posts">
   <div class="container">
     <div class="row">

@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 
-  # shows login page
+ 
   get '/login' do
     erb :login
   end

@@ -126,13 +126,13 @@ get '/college/:id' do
 
   school = @college.school_name
 
-  uri = URI("https://latcat21.github.io/college-highschool-JSON/colleges.JSON")
-    it = Net::HTTP.get(uri)
-    parsed_it = JSON.parse it 
-    @places = parsed_it
+  # uri = URI("https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=New%20York&api_key=uvDlAJZmM49t2mKjwR70yTSZUDGFBVGS0PHPgLF7")
+    # it = Net::HTTP.get(uri)
+    # parsed_it = JSON.parse it 
+    # @places = parsed_it
 
-    puts @places
-    puts "-----^-----api-------"
+    # puts @places
+    # puts "-----^-----api-------"
     
 
 

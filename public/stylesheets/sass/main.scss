@@ -33,14 +33,13 @@ body{
   padding: 10px;
 
  }
- .session-message{
-    margin-top: 50px;
- }
+
+
  .main-page-home-section{
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)) ,url(../images/main-image.jpg);
     background-size: cover;
     background-position: center;
-    height: 95vh;
+    height: 70vh;
     background-attachment: fixed;
     position: relative;
     margin-top: -50px;
@@ -73,6 +72,22 @@ body{
 
     }
 
+  }
+
+  // tesitmonial section
+
+  .testimonial{
+    background-color: $golden-wheat;
+
+    &__quote{
+      
+
+
+      &--author{
+      
+      }
+    }
+    
   }
 
   // The about seciont

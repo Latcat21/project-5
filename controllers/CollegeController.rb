@@ -130,10 +130,11 @@ class CollegeController < ApplicationController
   
     school = @player.school_name
 
-    uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,rating,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
+    uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,website,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
 			it = Net::HTTP.get(uri)
 			parsed_it = JSON.parse it 
       @places = parsed_it["results"]
+    
       @location =  @places.first['formatted_address']
 
     
@@ -157,6 +158,26 @@ class CollegeController < ApplicationController
       message: "Your message has been sent"
       }
       redirect "/colleges/account"
+  end
+
+  post 'player/:id/follow' do
+    logged_in_user = User.find_by({:username => session[:username]})
+    player = Player.find params[:id]
+
+    new_follow = Follow.new
+    new_follow.player_id = player.id
+    new_follow.college_id = logged_in_user.id
+
+    new_follow.save
+
+    session[:message] = {
+      success: true,
+      status: "Good",
+      message: "You are now following #{player.name}"
+      }
+
+      redirect "colleges/account"
+
   end
   
   get '/:id/edit' do

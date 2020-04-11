@@ -66,4 +66,14 @@ CREATE TABLE replies(
   content VARCHAR,
   message_id INTEGER REFERENCES messages(id),
   user_id INTEGER REFERENCES users(id)
+  
 );
+
+CREATE TABLE follows(
+  id SERIAL PRIMARY KEY,
+  player_id INTEGER REFERENCES players(id),
+  college_id INTEGER REFERENCES colleges(id)
+)
+
+
+
