@@ -69,11 +69,12 @@ CREATE TABLE replies(
   
 );
 
-CREATE TABLE follows(
+CREATE TABLE relations(
   id SERIAL PRIMARY KEY,
   player_id INTEGER REFERENCES players(id),
-  college_id INTEGER REFERENCES colleges(id)
-)
+  college_id INTEGER REFERENCES colleges(id),
+  user_id INTEGER REFERENCES users(id)
+);
 
 
 

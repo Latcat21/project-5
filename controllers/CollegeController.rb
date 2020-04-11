@@ -49,11 +49,15 @@ class CollegeController < ApplicationController
 
    
     @sent_messages = Message.where("from_id = ?", session[:user_id])
-    puts "-----sent messages----------"
-      puts @sent_messages
   
-    puts "^^^^^^^^sent messages^^^^^^^^^^^^^^"
+
+    @following = user.relations
+  
+      puts "-----following----------"
+    puts @following
+    puts "^^^^^^^^following^^^^^^^^^^^^^^"
     
+   
     erb :college_home
   end
 
@@ -163,14 +167,13 @@ class CollegeController < ApplicationController
   post '/player/:id/follow' do
 
     "hello world"
-    
+
     logged_in_user = User.find_by({:username => session[:username]})
     player = Player.find params[:id]
 
-    new_follow = Follow.new
-    new_follow.player_id = player.id
-    new_follow.college_id = logged_in_user.id
-
+    new_follow = Relation.new
+    new_follow.following = player.id
+    
     new_follow.save
     
 

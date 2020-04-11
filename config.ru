@@ -13,7 +13,7 @@ require './models/PlayerPosition'
 require './models/Message'
 require './models/Reply'
 require './models/State'
-require './models/Follow'
+require './models/Relation'
 
 require 'sass/plugin/rack'
 
