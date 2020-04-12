@@ -2,18 +2,30 @@
 <div class="container">
 
 <h1 class="text-center">College show page</h1>
-<div class="college-show-card bg-light text-center m-4">
+<div class="row">
+<div class="college-show-card bg-light text-center m-4 col-md-6">
 <div class="card" >
   <div class="card-header">
   <h2>School name : <%=@college.school_name%></h2>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"> Recruiters name:<%=@college.name%> </li>
-  li>
-   <li class="list-group-item">City: <%=@college.city%></li>
+  
+   <li class="list-group-item">Location: <%=@location%></li>
   </ul>
 </div>
- <div class="container">
+</div>
+<div class="col-md-6">
+<img src="https://maps.googleapis.com/maps/api/staticmap?center=<%=@modified%>&zoom=8&size=400x400&maptype=roadmap
+&markers=color:red%7Clabel:<%=@other_user%>%7C40.<%=@modified%>
+&key=AIzaSyC8MsmCzboLdVxigIdsbYS8wnNNxR2XNYs" alt="google_map" class="google_map">
+</body>
+
+</div>
+</div>
+
+
+ 
  <h2 class="p-3">Send them a message</h2>
        <form  action="/players/college/<%=@college.id%>/message" method="POST">
         <div class="form-group">
@@ -27,7 +39,3 @@
       </div>
 </div>
 
-<img src="https://maps.googleapis.com/maps/api/staticmap?center=<%=@modified%>&zoom=8&size=400x400&maptype=roadmap
-&markers=color:red%7Clabel:<%=@other_user%>%7C40.<%=@modified%>
-&key=AIzaSyC8MsmCzboLdVxigIdsbYS8wnNNxR2XNYs" alt="google_map" class="google_map">
-</body>
