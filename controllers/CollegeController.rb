@@ -206,7 +206,7 @@ class CollegeController < ApplicationController
     @college = College.find params[:id]
     @college.name = params[:name]
     @college.school_name = params[:school_name]
-    @college.state = params[:state]
+    @college.state_code = params[:state_code]
     @college.city = params[:city]
     @college.save
     

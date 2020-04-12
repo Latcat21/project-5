@@ -173,7 +173,7 @@ put '/account/:id' do
   updated_player = Player.find params[:id]
   updated_player.name = params[:name]
   updated_player.school_name = params[:school_name]
-  updated_player.state = params[:state]
+  updated_player.state_code = params[:state_code]
   updated_player.city = params[:city]
   updated_player.save
   # delete all player_positions associated with this player 
