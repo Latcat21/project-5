@@ -53,12 +53,19 @@ class CollegeController < ApplicationController
 
     @following = user.relations
   
-      puts "-----following----------"
-    puts @following
-    puts "^^^^^^^^following^^^^^^^^^^^^^^"
+    @count =  @following.count
+    
     
    
     erb :college_home
+  end
+
+  get '/following' do
+    user = User.find_by({:id => session[:user_id]})
+    @following = user.relations
+
+
+    erb  :college_following
   end
 
   get '/account/:id' do
@@ -171,10 +178,12 @@ class CollegeController < ApplicationController
     logged_in_user = User.find_by({:username => session[:username]})
     player = Player.find params[:id]
 
-    new_follow = Relation.new
-    new_follow.following = player.id
+    new_relation = Relation.new
+    new_relation.player_id = player.id
+    new_relation.college_id = logged_in_user.id
+    new_relation.user_id = logged_in_user.id
     
-    new_follow.save
+    new_relation.save
     
 
     session[:message] = {

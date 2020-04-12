@@ -1,0 +1,15 @@
+<h2>Here are the players you are following</h2>
+<div class="col-md-4">
+     <div class="card text-center bg-light  mb-3">
+          <div class="card-body">
+            <h4 class="pb-2" >You are follwing</h4>
+            <i class="fas fa-envelope pb-3"></i>
+          <% @following.each do |follow| %>
+                  <a href="/colleges/player/<%= follow.player_id %>"> View Profile</a>
+                  
+                
+            <% end %>
+                 
+            </div>
+          </div>
+        </div>
