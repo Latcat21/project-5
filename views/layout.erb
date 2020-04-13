@@ -25,11 +25,11 @@
         <li class="nav-item color-white">
           <a class="nav-link text-white" href="/players/account">Account</a>
         </li>
-        <%else%>
+        <%else session[:user_type] == "college" %>
          <li class="nav-item color-white">
           <a class="nav-link text-white" href="/colleges/account">Account</a>
         </li>
-        <%end %>
+        <% end %>
     <% else  %>
   		 <li class="nav-item color-white">
           <a class="nav-link text-white" href="/users/login">Login</a>

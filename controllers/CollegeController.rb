@@ -195,10 +195,10 @@ class CollegeController < ApplicationController
     player = Player.find params[:id]
 
     new_relation = Relation.new
-    new_relation.player_id = player.id
-    new_relation.college_id = logged_in_user.id
+    
     new_relation.name = player.name
     new_relation.user_id = logged_in_user.id
+    new_relation.other_user_if_player = player.id
     
     new_relation.save
     

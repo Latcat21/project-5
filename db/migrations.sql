@@ -72,9 +72,9 @@ CREATE TABLE replies(
 CREATE TABLE relations(
   id SERIAL PRIMARY KEY,
   name VARCHAR,
-  player_id INTEGER REFERENCES players(id),
-  college_id INTEGER REFERENCES colleges(id),
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id),
+  other_user_if_college INTEGER REFERENCES colleges(id),
+  other_user_if_player INTEGER REFERENCES players(id)
 );
 
 

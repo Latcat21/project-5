@@ -1,147 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+  <body>
+    <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
+<% if session[:message] %>
+<h6 class="text-secondary text-center <%= session[:message][:status] %>"><%= session[:message][:message] %></h6>
+  <% end 
+  session[:message] = nil
+   %>
+<h1 class="py-5 mt-5 text-center"> Welcome to your account</h1>
+      <section>
+        <div class="container">
+        <div class="row">
+        <div class="col-md-4">
+     <div class="card text-center bg-secondary  mb-3">
+          <div class="card-body">
+            <h4 class="pb-2 text-white" >My Inbox </h4>
+            <h2> <i class="fas fa-envelope text-white pb-3"></i></h2>
+         <h5 class="text-white"><a class='text-white' href="/players/inbox">
+        
+          <%= @inbox_count %>
+           Messages </a></h5>
+          
+                 </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+     <div class="card text-center bg-secondary  mb-3">
+          <div class="card-body">
+            <h4 class="pb-2 text-white" >Sent messages</h4>
+           <h2> <i class="fas fa-envelope pb-3 text-white"></i></h2>
+           <h5 class="text-white"><a class='text-white' href="/players/outbox"> <%= @outbox_count %> Messages </a></h5>
+            </div>
+          </div>
+        </div>
+           <div class="col-md-4">
+     <div class="card text-center bg-secondary mb-3">
+          <div class="card-body">
+            <h4 class="pb-2 text-white " >You are follwing</h4>
+            <h2><i class="fas fa-envelope pb-3 text-white"></i></h2>
+           <h5 class=""><a class='text-white' href="/players/following"> <%= @following_count %> Colleges </a></h5>
+                 
+            </div>
+          </div>
+        </div>
 
-<body>
-  <div class="college-show shadow-lg p-5 my-4 mt-5 bg-white rounded">
-    <h1 class="py-5 mt-5 text-center">
-      Welcome to your account</h1>
-      <% if session[:message] %>
-<h5 class="text-secondary <%= session[:message][:status] %>"><%= session[:message][:message] %></h5>
-  <% 
-    end
-    session[:message] = nil 
-%>
-<section id="posts">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="card">
-         <table class="table table-striped">
-             <tbody>
-              <tr>
-                <td>Player Name</td>
-              <td><%= @player.name %> </td>
-            <td>
-            <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-          <i class="fas fa-angle-double-right"></i> Edit
-            </a>
-            </td>
-            </tr>
-              <tr>
-                <td>School Name</td>
-                  <td> <%= @player.school_name %></td>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                      <td>Name</td>
+                      <td><%= @player.name %></td>
                     <td>
                       <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                        <i class="fas fa-angle-double-right"></i> Edit
-                        </a>
-                  </td>
-              </tr>
-              <tr>
-           
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
                       <i class="fas fa-angle-double-right"></i> Edit
                     </a>
-                  </td>
-              </tr>
-              <tr>
-              <td>City</td>
-                <td><%= @player.city %></td>
-                  <td>
-                  <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                    <i class="fas fa-angle-double-right"></i> Edit
-                  </a>
-                  </td>
-              </tr>
-              <tr>
-                <td>Weight</td>
-                
-                    <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right "></i> Edit
+                    </td>
+                  </tr>
+                  <tr>
+                   <td>School Name</td>
+                   <td><%= @player.school_name %></td>
+                    <td>
+                       <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Edit
                     </a>
-                  </td>
-              </tr>
-              <tr>
-                
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right "></i> Edit
+                    </td>
+                  </tr>
+                    <tr>
+                      <td>City</td>
+                      <td><%= @player.city %></td>
+                   <td>
+                     <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Edit
                     </a>
-                  </td>
-              </tr>
-              <tr>
-                  <td>Email</td>
-                
-                  <td>
-                    <a href="/players/<%= @player.id %>/edit"class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right "></i> Edit
-                    </a>
-                  </td>
-              </tr>
-              </tbody>
-          </table>
-        </div>
-      </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center bg-light mb-3">
-          <div class="card-body">
-              <h4 class="pb-2">Posistions I Play</h4>
-              <i class="fas fa-baseball"></i></i> 
-                <% @positions.each do |position| %>
-                      <h5>  <%= position.name%> </h5>
-                    <% end %>
-                
-                </ul>
-            <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
-              <i class="fas fa-angle-double-right "></i> Edit
-            </a>
-            </div>
-        </div>
-        </div>
-  <div class="card text-center bg-light  mb-3">
-          <div class="card-body">
-           
-            <i class="fas fa-baseball-ball pb-3"></i>
-           
-           
-            <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
-              <i class="fas fa-angle-double-right "></i> Edit
-            </a>
-          </div>
-        </div>
-          <div class="card text-center bg-light  mb-3">
-          <div class="card-body">
-            <h4 class="pb-2" >My messages</h4>
-            <i class="fas fa-envelope pb-3"></i>
-          <% @messages.each do |message| %>
-                  <p>Title: <%= message.title%> </p>
-                  <p>Content:<%= message.content%> </p>
-                  <a href="/players/account/<%=message.id %>">View</a>
-                <% end %>
-                 
-            
-          </div>
-        </div>
-            <div class="col-md-4">
-     <div class="card text-center bg-light  mb-3">
-          <div class="card-body">
-            <h4 class="pb-2" >Sent messages</h4>
-            <i class="fas fa-envelope pb-3"></i>
-          <% @sent_messages.each do |message| %>
-                  <p>Title: <%= message.title%> </p>
-                  <p>Content:<%= message.content%> </p>
-                <a href="/colleges/account/<%=message.id %>">View</a>
-            <% end %>
-                 
-            </div>
-          </div>
-        </div>
-          
-  
+                    </td>
+                  </tr>
+                 </tbody>
+              </table>
+            </div> 
+          </div> 
+          <div class="col-md-4">
+            <div class="card text-center  mb-3">
+              <div class="card-body bg-light">
+                <h4 class="">Posistions I Play</h4>
+                <h2><i class="fas fa-pencil-alt py-2 "></i> </h2>
+                <%@positions.each do |position| %>
+                  <h5>  <%=position.name%></h5>
+                  <% end %>
+              <a href="/players/<%= @player.id %>/edit" class="btn btn-secondary">
+                <i class="fas fa-angle-double-right "></i> Edit</a>
+             </div> 
+          </div> 
+      </div> 
+     
+      
+
+
   <a href="/players/matching-colleges" class="btn btn-secondary btn-block mt-3">
-    <i class="fas fa-plus "></i> Find Colleges That Need You
-  </a>
+    <i class="fas fa-plus "></i> Find Colleges That Need you</a>
+  </section>
+    </div>
+  </body>
   </div>
-</section>
-</div>
-</body>
-</html>
+  </html>

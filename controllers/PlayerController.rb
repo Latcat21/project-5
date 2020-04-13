@@ -43,12 +43,45 @@ get '/account' do
   user = User.find_by({:id => session[:user_id]})
   @player = Player.find_by({:user_id => session[:user_id]})
   @positions = @player.positions
-
   @messages = user.messages
   @sent_messages = Message.where("from_id = ?", session[:user_id])
-  
+
+  @following = user.relations
+
+  if @following.size > 0
+  @following_count =  @following.count
+  end
+  if @messages.size > 0
+  @inbox_count = @messages.count
+  end
+  if @sent_messages.size > 0
+  @outbox_count = @sent_messages.count
+  end
+
   erb :player_home
 end
+
+get '/inbox' do
+  user = User.find_by({:id => session[:user_id]})
+  @messages = user.messages
+  erb :player_inbox
+
+end
+
+get '/following' do
+  user = User.find_by({:id => session[:user_id]})
+  @following = user.relations
+  erb  :player_following
+end
+
+get '/outbox' do
+  @sent_messages = Message.where("from_id = ?", session[:user_id])
+
+  erb :player_outbox
+end
+
+
+
 
 get '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
@@ -161,6 +194,35 @@ post '/college/:id/message' do
     
     redirect "/players/account"
 end
+
+post '/college/:id/follow' do
+
+  "hello world"
+
+  logged_in_user = User.find_by({:username => session[:username]})
+  college = College.find params[:id]
+  
+
+  new_relation = Relation.new
+  
+  new_relation.name = college.name
+  new_relation.user_id = logged_in_user.id
+  new_relation.other_user_if_college = college.id
+  
+  new_relation.save
+  
+
+  session[:message] = {
+    success: true,
+    status: "Good",
+    message: "You are now following #{college.name}"
+    }
+
+    redirect "players/account"
+    
+end
+
+
 
 
 get '/:id/edit' do
