@@ -52,12 +52,18 @@ class CollegeController < ApplicationController
   
 
     @following = user.relations
-  
-    @count =  @following.count
-    
-    
-   
-    erb :college_home
+
+    if @following.size > 0
+    @following_count =  @following.count
+    end
+    if @messages.size > 0
+    @inbox_count = @messages.count
+    end
+    if @sent_messages.size > 0
+    @outbox_count = @sent_messages.count
+    end
+
+  erb :college_home
   end
 
   get '/following' do
