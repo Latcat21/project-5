@@ -81,8 +81,6 @@ class CollegeController < ApplicationController
   get '/following' do
     user = User.find_by({:id => session[:user_id]})
     @following = user.relations
-
-
     erb  :college_following
   end
 
@@ -199,6 +197,7 @@ class CollegeController < ApplicationController
     new_relation = Relation.new
     new_relation.player_id = player.id
     new_relation.college_id = logged_in_user.id
+    new_relation.name = player.name
     new_relation.user_id = logged_in_user.id
     
     new_relation.save

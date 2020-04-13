@@ -1,15 +1,25 @@
-<h2>Here are the players you are following</h2>
-<div class="col-md-4">
-     <div class="card text-center bg-light  mb-3">
-          <div class="card-body">
-            <h4 class="pb-2" >You are follwing</h4>
-            <i class="fas fa-envelope pb-3"></i>
-          <% @following.each do |follow| %>
-                  <a href="/colleges/player/<%= follow.player_id %>"> View Profile</a>
-                  
-                
-            <% end %>
-                 
-            </div>
-          </div>
+<div class="container mt-5 p-3">
+<h2 class="text-center mt-5 p-5">Here are the Players you are following</h2>
+<div class="row justify-content-center mt-5">
+          <div class="col-md-8">
+            <div class="card mt-3">
+              <table class="table table-striped">
+                <tbody>
+                <% @following.each do |user| %>
+                  <tr>
+                      <td>Name</td>
+                      <td><%= user.name %></td>
+                    <td>
+                        <a href="/colleges/player/<%= user.player_id %>" class="btn btn-secondary">
+                           View
+                        </a>
+                         
+                    </td>
+                  </tr>
+                  <% end %>
+
+                  </tbody>
+              </table>
+            </div> 
+          </div> 
         </div>
