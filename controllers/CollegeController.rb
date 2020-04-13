@@ -47,8 +47,7 @@ class CollegeController < ApplicationController
     @positions = @college.positions
     @messages = user.messages
 
-   
-    @sent_messages = Message.where("from_id = ?", session[:user_id])
+   @sent_messages = Message.where("from_id = ?", session[:user_id])
   
 
     @following = user.relations
@@ -64,6 +63,14 @@ class CollegeController < ApplicationController
     end
 
   erb :college_home
+
+  end
+
+  get '/inbox' do
+
+    user = User.find_by({:id => session[:user_id]})
+    @messages = user.messages
+    erb :college_inbox
   end
 
   get '/following' do
