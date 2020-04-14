@@ -1,24 +1,39 @@
-<div class="containr">
+<div class="container mt-5">
+  <div class="p-5 row justify-content-center">
+    <div class="card col-6 rounded bg-light">
+      <div class="card-body">
+        <div class="card-title">
+          <h2> Title: <%=@message.title%></h2>
+            <small>From: <%=@message.user.id%></small>
+          </div>
+          <p class='card-text'><%=@message.content%></p>
+      </div>
+    </div>
+</div>
 
-<h2>title: <%=@message.title%></h2>
-<p><%=@message.content%></p>
-<p>from: <%=@message.user.id%></p>
+<% if @replies  %>
+<div class="row justify-content-center">
+<div class="card col-6 rounded bg-secondary">
+<div class="card-body">
 
 <% @replies.each do |reply| %>
-<h4><%=reply.content%></h4>
+<p class="card-text text-white"><%=reply.content%></h4>
 
 <% end %>
-<form action="/players/account/<%=@message.id%>" method="POST" >
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger my-3">DELETE</button>
-          </form>
+<% end %>
+</div>
 
- <h2 class="p-3">Reply</h2>
+</div>
+</div>
+      <h2 class="p-3">Reply</h2>
        <form  action="/players/account/<%=@message.id%>/reply" method="POST">
         <div class="form-group">
           <textarea class="form-control" name="content" rows=5></textarea>
           </div>
             <button class="btn btn-primary m-3" >Submit</button>
         </form>
-      </div>
-      </div>
+        <form action="/players/account/<%=@message.id%>" method="POST" >
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger my-3">DELETE</button>
+        </form>
+  </div>
