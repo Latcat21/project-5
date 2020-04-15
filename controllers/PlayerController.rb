@@ -74,6 +74,19 @@ get '/following' do
   erb  :player_following
 end
 
+delete '/following/:id' do
+  'hello world'
+ following = Relation.find params[:id]
+ following.destroy
+
+  session[:message] = {
+    success: true,
+    status: "Good",
+    message: "User successfully unfollowed  #{following.name} "
+    }
+redirect '/players/account'
+end
+
 get '/outbox' do
   @sent_messages = Message.where("from_id = ?", session[:user_id])
 
@@ -221,6 +234,8 @@ post '/college/:id/follow' do
     redirect "players/account"
     
 end
+
+
 
 
 

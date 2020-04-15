@@ -15,6 +15,12 @@
                         </a>
                          
                     </td>
+                    <td>
+                    <form action="/colleges/following/<%=@follow.id%>" method="POST" >
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger my-3">Unfollow</button>
+                    </form>
+                    </td>
                   </tr>
                   <% end %>
 

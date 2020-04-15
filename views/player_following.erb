@@ -5,16 +5,23 @@
             <div class="card mt-3">
               <table class="table table-striped">
                 <tbody>
-                <% @following.each do |user| %>
+                <% @following.each do |follow| %>
                   <tr>
                       <td>Name</td>
-                      <td><%= user.name %></td>
+                      <td><%= follow.name %></td>
                     <td>
-                        <a href="/players/college/<%= user.other_user_if_college %>" class="btn btn-secondary">
+                        <a href="/players/college/<%= follow.other_user_if_college %>" class="btn btn-secondary">
                            View
                         </a>
                          
                     </td>
+                    <td>
+                    <form action="/players/following/<%= follow.id%>" method="POST" >
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger my-3">Unfollow</button>
+                    </form>
+                    </td>
+                  </tr>
                   </tr>
                   <% end %>
 
