@@ -1,6 +1,7 @@
 <body>
 <% if !@available_players.any? %>
 <h5> Sorry there are no matches at the moment </h5>
+<% else %>
 <div class="player-match">
     <% @available_players.each do |player| %>
 

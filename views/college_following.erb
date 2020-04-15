@@ -1,27 +1,31 @@
 <div class="container mt-5 p-3">
 <h2 class="text-center mt-5 p-5">Here are the Players you are following</h2>
 <div class="row justify-content-center mt-5">
+<% if !@following.any? %>
+<h5> You are not following anyone </h5>
+<% else %>
           <div class="col-md-8">
             <div class="card mt-3">
               <table class="table table-striped">
                 <tbody>
-                <% @following.each do |user| %>
+                <% @following.each do |follow| %>
                   <tr>
                       <td>Name</td>
-                      <td><%= user.name %></td>
+                      <td><%= follow.name %></td>
                     <td>
-                        <a href="/colleges/player/<%= user.other_user_if_player%>" class="btn btn-secondary">
+                        <a href="/colleges/player/<%= follow.other_user_if_player%>" class="btn btn-secondary">
                            View
                         </a>
                          
                     </td>
                     <td>
-                    <form action="/colleges/following/<%=@follow.id%>" method="POST" >
+                    <form action="/colleges/following/<%= follow.id%>" method="POST" >
                     <input type="hidden" name="_method" value="DELETE">
                     <button class="btn btn-danger my-3">Unfollow</button>
                     </form>
                     </td>
                   </tr>
+                  <% end %>
                   <% end %>
 
                   </tbody>

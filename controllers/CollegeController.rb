@@ -84,6 +84,19 @@ class CollegeController < ApplicationController
     erb  :college_following
   end
 
+  delete '/following/:id' do
+    following = Relation.find params[:id]
+    following.destroy
+    session[:message] = {
+      success: false,
+      status: "neutral",
+      message: "You successfully unfollowed #{following.name}"
+    }
+
+    redirect '/colleges/account'
+
+  end
+
   get '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
   @message = Message.find params[:id]
