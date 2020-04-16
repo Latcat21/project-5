@@ -45,11 +45,9 @@ class CollegeController < ApplicationController
     user = User.find_by({:id => session[:user_id]})
     @college = College.find_by({ :user_id => session[:user_id]})
     @positions = @college.positions
+    
     @messages = user.messages
-
-   @sent_messages = Message.where("from_id = ?", session[:user_id])
-  
-
+    @sent_messages = Message.where("from_id = ?", session[:user_id])
     @following = user.relations
 
     if @following.size > 0
@@ -74,7 +72,6 @@ class CollegeController < ApplicationController
 
   get '/outbox' do
     @sent_messages = Message.where("from_id = ?", session[:user_id])
-
     erb :college_outbox
   end
 
@@ -87,22 +84,21 @@ class CollegeController < ApplicationController
   delete '/following/:id' do
     following = Relation.find params[:id]
     following.destroy
+    
     session[:message] = {
       success: false,
       status: "neutral",
       message: "You successfully unfollowed #{following.name}"
     }
-
     redirect '/colleges/account'
 
   end
 
   get '/account/:id' do
-  user = User.find_by({:id => session[:user_id]})
-  @message = Message.find params[:id]
-  @replies = @message.replies
-
-  erb :college_message
+    user = User.find_by({:id => session[:user_id]})
+    @message = Message.find params[:id]
+    @replies = @message.replies
+    erb :college_message
   end
 
   delete '/account/:id' do
@@ -146,6 +142,7 @@ class CollegeController < ApplicationController
 
   end
 
+
   get '/matching-players' do
     @college = College.find_by({ :user_id => session[:user_id]})
     #find the college positions
@@ -159,7 +156,8 @@ class CollegeController < ApplicationController
     erb :player_match
    end
 
-   get '/player/:id' do
+
+  get '/player/:id' do
     @player= Player.find params[:id]
     city_name = @player.city
     found_state = State.find_by({:id => @player.state_code})
@@ -177,8 +175,7 @@ class CollegeController < ApplicationController
     
       @location =  @places.first['formatted_address']
 
-    
-  erb :player_show
+      erb :player_show
   end
 
   post '/player/:id/message' do
@@ -201,29 +198,23 @@ class CollegeController < ApplicationController
   end
 
   post '/player/:id/follow' do
-
     "hello world"
 
     logged_in_user = User.find_by({:username => session[:username]})
     player = Player.find params[:id]
-
     new_relation = Relation.new
     
     new_relation.name = player.name
     new_relation.user_id = logged_in_user.id
     new_relation.other_user_if_player = player.id
-    
     new_relation.save
     
-
     session[:message] = {
       success: true,
       status: "Good",
       message: "You are now following #{player.name}"
       }
-
-      redirect "colleges/account"
-      
+    redirect "colleges/account"
   end
   
   get '/:id/edit' do
