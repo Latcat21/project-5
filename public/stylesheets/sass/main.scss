@@ -75,26 +75,7 @@ body{
 
   }
 
-  // tesitmonial section
-
-  .testimonial{
-    background-color: white;
-    min-height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__quote{
-      
-
-
-      &--author{
-      
-      }
-    }
-    
-  }
-
+ 
   // The about seciont
   .about{
    background-color: $golden-wheat;
@@ -129,6 +110,7 @@ body{
       color: white;
  }
 }
+
 // How it works section
 
   .works{
@@ -153,7 +135,39 @@ body{
       padding: 3px;
    }
   }
-   .gallery{
+
+   // tesitmonial section
+
+   .testimonial{
+    background-color: $golden-wheat;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    
+    &__quote{
+      padding: 2%;
+      font-style: italic;
+      line-height: 145%;
+      position: relative;
+      font-size: 18px;
+     
+      &--author{
+       font-size: 18px;
+       display: block;
+      }
+    }
+    &__quote:before{
+      content: "\201C";
+      font-size: 500%;
+      display: block;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+    }
+  }
+    .gallery{
        background-color: white;
        padding: 50px;
 
@@ -163,8 +177,8 @@ body{
       }
     }
 
-     
 // End of home page
+
 //Player & college login / Register / Edit / match pages
 .login,
 .register
@@ -211,7 +225,7 @@ body{
 }
 }
 .college-card{
-  height: 200px;
+  min-height: 200px;
   width: 200px;
   float: left;
   box-shadow: 0 1.5rem 4rem rgba(#000, .15);

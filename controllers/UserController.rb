@@ -17,10 +17,10 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       
       if user.player_user == true
-        session[:user_type] == 'player'
+        session[:user_type] = 'player'
         redirect '/players/account'
       else
-        session[:user_type] == 'college'
+        session[:user_type] = 'college'
        redirect '/colleges/account'
       end
 
