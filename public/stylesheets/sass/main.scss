@@ -78,7 +78,11 @@ body{
   // tesitmonial section
 
   .testimonial{
-    background-color: $golden-wheat;
+    background-color: white;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__quote{
       
@@ -150,7 +154,7 @@ body{
    }
   }
    .gallery{
-       background-color: $golden-wheat;
+       background-color: white;
        padding: 50px;
 
       h1{

@@ -1,13 +1,13 @@
 class CollegeController < ApplicationController
 
   before do
-    if !session[:logged_in]
+    if !session[:logged_in] || session[:user_type] != "college"
       session[:message] = {
         success: false,
         status: "neutral",
         message: "You must be logged in to do that."
       }
-      redirect '/users'
+      redirect '/users/login'
     end
   end
 

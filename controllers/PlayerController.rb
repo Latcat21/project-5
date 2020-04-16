@@ -1,8 +1,7 @@
 class PlayerController < ApplicationController
 
   before do
-    puts "before filter is running"
-      if !session[:logged_in]
+   if !session[:logged_in] || session[:user_type] != 'player'
         session[:message] = {
         success: false,
         status: "neutral",
