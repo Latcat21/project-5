@@ -83,16 +83,13 @@ delete '/following/:id' do
     status: "Good",
     message: "User successfully unfollowed  #{following.name} "
     }
-redirect '/players/account'
+  redirect '/players/account'
 end
 
 get '/outbox' do
   @sent_messages = Message.where("from_id = ?", session[:user_id])
-
   erb :player_outbox
 end
-
-
 
 
 get '/account/:id' do
@@ -112,9 +109,8 @@ delete '/account/:id' do
   replies.each  do |relation|
     relation.destroy
   end
-
+  
   message_id = message.id
-
   message.destroy
   
   session[:message] = {
@@ -122,7 +118,6 @@ delete '/account/:id' do
     status: "Good",
     message: "Message #{message_id} has been deleted"
     }
-
   redirect '/players/account'
 
 end
@@ -161,11 +156,9 @@ get '/college/:id' do
   @college = College.find params[:id]
   city_name = @college.city
   found_state = State.find_by({:id  => @college.state_code})
-
-
+  
   state = found_state[:code]
-
- 
+  
   @modified = address(city_name, state)
   @other_user = @college.name
 
@@ -178,13 +171,7 @@ get '/college/:id' do
 
   @location =  @places.first['formatted_address']
     
-
-
-   
-
-
   erb :college_show
-
 end
 
 post '/college/:id/message' do
@@ -208,13 +195,9 @@ post '/college/:id/message' do
 end
 
 post '/college/:id/follow' do
-
   "hello world"
-
   logged_in_user = User.find_by({:username => session[:username]})
   college = College.find params[:id]
-  
-
   new_relation = Relation.new
   
   new_relation.name = college.name
@@ -222,8 +205,6 @@ post '/college/:id/follow' do
   new_relation.other_user_if_college = college.id
   
   new_relation.save
-  
-
   session[:message] = {
     success: true,
     status: "Good",
@@ -233,11 +214,6 @@ post '/college/:id/follow' do
     redirect "players/account"
     
 end
-
-
-
-
-
 
 get '/:id/edit' do
   @positions = Position.all

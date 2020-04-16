@@ -5,7 +5,7 @@ class UserController < ApplicationController
     erb :login
   end
 
-  #  the login 
+  
   post '/login' do
     # find user by username
     user = User.find_by username: params[:username]
@@ -23,9 +23,9 @@ class UserController < ApplicationController
         session[:user_type] == 'college'
        redirect '/colleges/account'
       end
-# else 
+
     else
-      # error -- incorrect un or pw
+     
     session[:message] = {
         success: false,
         status: "bad",
@@ -35,14 +35,13 @@ class UserController < ApplicationController
     end
 end
   
-  # shows register 
+ 
   get '/register' do
     erb :register
   end
 
-  # do registration
+  
   post '/register' do
-    # check if user exists 
     user = User.find_by username: params[:username]
       
     if !user
@@ -64,19 +63,16 @@ end
 
       user.save
 
-
       session[:logged_in] = true
       session[:username] = user.username
       session[:user_id] = user.id
      
-
     if user.player_user == true
         session[:user_type] == "player"
         redirect '/players'
     else user.college_user == true
-      session[:user_type] == "college"
-         redirect '/colleges'
-  
+        session[:user_type] == "college"
+        redirect '/colleges'
     end
 
     else 
@@ -89,9 +85,9 @@ end
        # redirect to register so they can try again
       redirect '/users/register'
       end # if user does or does not exist 
-    end # post
+   end # post
 
-    # logout
+   
   get '/logout' do
     username = session[:username] 
     session.destroy
