@@ -140,11 +140,17 @@ body{
 
    .testimonial{
     background-color: $golden-wheat;
-    min-height: 300px;
     display: flex;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
-    position: absolute;
+    min-height: 300px;
+   
+    &__block{
+      margin: 10px;
+      width: 300px;
+      padding: 15px;
+    }
     
     &__quote{
       padding: 2%;
@@ -154,7 +160,7 @@ body{
       font-size: 18px;
      
       &--author{
-       font-size: 18px;
+       font-size: 30px;
        display: block;
       }
     }
