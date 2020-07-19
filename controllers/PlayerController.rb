@@ -97,7 +97,7 @@ get '/account/:id' do
   @message = Message.find params[:id]
   message = Message.all
 
-  @replies = user.replies
+  @replies = @message.replies
   erb :player_message
 end
 
@@ -164,7 +164,7 @@ get '/college/:id' do
 
   school = @college.school_name
 
-  uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,website,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
+  uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,website,price_level&&key=AIzaSyAX--aXSI4BhWWyxHFBLCnhg5MdMlHf_qM")
   it = Net::HTTP.get(uri)
   parsed_it = JSON.parse it 
   @places = parsed_it["results"]
@@ -199,12 +199,12 @@ post '/college/:id/follow' do
   logged_in_user = User.find_by({:username => session[:username]})
   college = College.find params[:id]
   new_relation = Relation.new
-  
   new_relation.name = college.name
   new_relation.user_id = logged_in_user.id
   new_relation.other_user_if_college = college.id
   
   new_relation.save
+  
   session[:message] = {
     success: true,
     status: "Good",

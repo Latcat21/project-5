@@ -168,7 +168,7 @@ class CollegeController < ApplicationController
   
     school = @player.school_name
 
-    uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,website,price_level&&key=AIzaSyDjHCJerc_QTC2Kq1NtMEew4oGQJEBWqks")
+    uri = URI("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{school}&inputtype=textquery&&fields=formatted_address,name,website,price_level&&key=AIzaSyAX--aXSI4BhWWyxHFBLCnhg5MdMlHf_qM")
 			it = Net::HTTP.get(uri)
 			parsed_it = JSON.parse it 
       @places = parsed_it["results"]
