@@ -18,7 +18,7 @@ get '/' do
 
 end
 
-
+#creating a new player and storing what they selected
 post '/account' do
   new_player= Player.new
   new_player.name = params[:name]
