@@ -172,7 +172,9 @@ class CollegeController < ApplicationController
 			it = Net::HTTP.get(uri)
 			parsed_it = JSON.parse it 
       @places = parsed_it["results"]
-    
+      puts "-------------"
+      puts @places
+      puts "----------------"
       @location =  @places.first['formatted_address']
 
       erb :player_show

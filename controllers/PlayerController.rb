@@ -10,13 +10,14 @@ class PlayerController < ApplicationController
     redirect '/users/login'
     end
   end
-  
+# registration page for players. All positions and all states for forms
 get '/' do
   @positions = Position.all
   @states = State.all
   erb :player_reg
 
 end
+
 
 post '/account' do
   new_player= Player.new
@@ -26,9 +27,10 @@ post '/account' do
   new_player.city = params[:city]
   new_player.user_id = session[:user_id]
   new_player.save
- # this is an array of id's
+  
+  # this is an array of id's
   player_position_id = params[:position]
-
+  #looping through and creating a new positions for ever position selected 
   player_position_id.each do |position_id|
   new_player_position = PlayerPosition.new
   new_player_position.player_id = new_player.id
@@ -37,7 +39,7 @@ post '/account' do
   end
   redirect "/players/account"
 end
-
+#account home pages
 get '/account' do
   user = User.find_by({:id => session[:user_id]})
   @player = Player.find_by({:user_id => session[:user_id]})
@@ -46,7 +48,7 @@ get '/account' do
   @sent_messages = Message.where("from_id = ?", session[:user_id])
 
   @following = user.relations
-
+  #If these exit taht it outputs the count
   if @following.size > 0
   @following_count =  @following.count
   end
@@ -59,20 +61,21 @@ get '/account' do
 
   erb :player_home
 end
-
+#message inbox
 get '/inbox' do
   user = User.find_by({:id => session[:user_id]})
   @messages = user.messages
   erb :player_inbox
 
 end
-
+#all the users that are being followed
 get '/following' do
   user = User.find_by({:id => session[:user_id]})
   @following = user.relations
   erb  :player_following
 end
 
+#unfollow a user
 delete '/following/:id' do
   'hello world'
  following = Relation.find params[:id]
@@ -86,12 +89,14 @@ delete '/following/:id' do
   redirect '/players/account'
 end
 
+#all sent messages
 get '/outbox' do
+  #getting all sent massages that are asigned to this users id.
   @sent_messages = Message.where("from_id = ?", session[:user_id])
   erb :player_outbox
 end
 
-
+#Route for an individual message, in the user inbox
 get '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
   @message = Message.find params[:id]
@@ -100,7 +105,7 @@ get '/account/:id' do
   @replies = @message.replies
   erb :player_message
 end
-
+#deleting the replies in the users inbox
 delete '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
   message = Message.find params[:id]
@@ -121,7 +126,7 @@ delete '/account/:id' do
   redirect '/players/account'
 
 end
-
+# Post route that handles replies to a message
 post '/account/:id/reply' do
   logged_in_user = User.find_by ({ :username => session[:username] })
   message = Message.find params[:id]
@@ -134,11 +139,12 @@ post '/account/:id/reply' do
   session[:message] = {
     success: true,
     status: "Good",
-    message: "Your replay has been sent"
+    message: "Your reply has been sent"
     }
     redirect "/players/account"
 end
 
+# The matching colleges
 get '/matching-colleges' do
   @player = Player.find_by({:user_id => session[:user_id]})
   #finds this players positions
@@ -151,14 +157,14 @@ get '/matching-colleges' do
    @open_positions = @open_positions.uniq()
   erb :college_match
 end
-
+#get route for an individual college
 get '/college/:id' do
   @college = College.find params[:id]
   city_name = @college.city
   found_state = State.find_by({:id  => @college.state_code})
   
   state = found_state[:code]
-  
+  # for the google maps on the views
   @modified = address(city_name, state)
   @other_user = @college.name
 
@@ -168,12 +174,13 @@ get '/college/:id' do
   it = Net::HTTP.get(uri)
   parsed_it = JSON.parse it 
   @places = parsed_it["results"]
-
+  
   @location =  @places.first['formatted_address']
     
   erb :college_show
 end
 
+# Posting a message to that college
 post '/college/:id/message' do
   logged_in_user = User.find_by ({ :username => session[:username] })
    
@@ -193,7 +200,7 @@ post '/college/:id/message' do
     
     redirect "/players/account"
 end
-
+# Following the college
 post '/college/:id/follow' do
   "hello world"
   logged_in_user = User.find_by({:username => session[:username]})
@@ -214,13 +221,13 @@ post '/college/:id/follow' do
     redirect "players/account"
     
 end
-
+# edit page for the players account.
 get '/:id/edit' do
   @positions = Position.all
   @player = Player.find params[:id]
   erb :player_edit
 end
-
+#put route for account edit.
 put '/account/:id' do
   updated_player = Player.find params[:id]
   updated_player.name = params[:name]
