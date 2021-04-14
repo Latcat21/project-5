@@ -10,6 +10,7 @@ class PlayerController < ApplicationController
     redirect '/users/login'
     end
   end
+  
 # registration page for players. All positions and all states for forms
 get '/' do
   @positions = Position.all
@@ -39,6 +40,7 @@ post '/account' do
   end
   redirect "/players/account"
 end
+
 #account home pages
 get '/account' do
   user = User.find_by({:id => session[:user_id]})
@@ -61,6 +63,7 @@ get '/account' do
 
   erb :player_home
 end
+
 #message inbox
 get '/inbox' do
   user = User.find_by({:id => session[:user_id]})
@@ -77,7 +80,7 @@ end
 
 #unfollow a user
 delete '/following/:id' do
-  'hello world'
+  
  following = Relation.find params[:id]
  following.destroy
 
@@ -105,6 +108,7 @@ get '/account/:id' do
   @replies = @message.replies
   erb :player_message
 end
+
 #deleting the replies in the users inbox
 delete '/account/:id' do
   user = User.find_by({:id => session[:user_id]})
@@ -126,6 +130,7 @@ delete '/account/:id' do
   redirect '/players/account'
 
 end
+
 # Post route that handles replies to a message
 post '/account/:id/reply' do
   logged_in_user = User.find_by ({ :username => session[:username] })
@@ -157,6 +162,7 @@ get '/matching-colleges' do
    @open_positions = @open_positions.uniq()
   erb :college_match
 end
+
 #get route for an individual college
 get '/college/:id' do
   @college = College.find params[:id]
@@ -200,6 +206,7 @@ post '/college/:id/message' do
     
     redirect "/players/account"
 end
+
 # Following the college
 post '/college/:id/follow' do
   "hello world"
@@ -221,12 +228,14 @@ post '/college/:id/follow' do
     redirect "players/account"
     
 end
+
 # edit page for the players account.
 get '/:id/edit' do
   @positions = Position.all
   @player = Player.find params[:id]
   erb :player_edit
 end
+
 #put route for account edit.
 put '/account/:id' do
   updated_player = Player.find params[:id]
