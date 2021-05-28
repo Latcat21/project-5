@@ -58,7 +58,10 @@ CREATE TABLE messages(
   title VARCHAR,
   content VARCHAR,
   user_id INTEGER REFERENCES users(id),
-  from_id INTEGER REFERENCES users(id)
+  from_id INTEGER REFERENCES users(id),
+  deleted_by_user BOOLEAN,
+  count_of_delete INTEGER
+  
 );
 
 CREATE TABLE replies(

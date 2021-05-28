@@ -9,6 +9,7 @@
               <table class="table table-striped">
                 <tbody>
                 <% @sent_messages.each do |message| %>
+                <%if message.deleted_by_user == false%>
                   <tr>
                       <td>Title</td>
                       <td><%= message.title %></td>
@@ -21,6 +22,7 @@
                          
                     </td>
                   </tr>
+                  <% end %>
                   <% end %>
                   <% end %>
 
